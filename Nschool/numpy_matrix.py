@@ -1,0 +1,30 @@
+import numpy
+
+A = numpy.array([[1, 3], [5, 7]])
+B = numpy.array([[2, 4], [6, 8]])
+C = numpy.array([[3, 5, 6], [6, 8, 9]])
+D = numpy.array([[1, 2], [2, 3]])
+# print("A + B =", A + B)
+# print("A - B =", A - B)
+# print("A * B =", A * B)
+# print("A × B =", A.dot(B))
+# print("B × A =", B.dot(A))
+# print("C転移 = ", C.T)
+# print(numpy.array_equal(A.T.T, A))
+print("detA =", numpy.linalg.det(A))
+
+# D_INV = numpy.linalg.inv(D)
+# print("D逆行式 =", D_INV)
+# print("D × D_INV = E", D.dot(D_INV))
+# print("D_INV × D = E", D_INV.dot(D))
+
+# F = numpy.array([[1, 2], [-1, 4]])
+# eig_value, eig_vector = numpy.linalg.eig(F)
+# print("固有値 =", eig_value)
+# print("1つ目の固有値に対応した固有ベクトル =", eig_vector[:, 0])
+# print("2つ目の固有値に対応した固有ベクトル =", eig_vector[:, 1])
+
+# print("固有ベクトル1のノルム", numpy.linalg.norm(eig_vector[:, 0]))
+# print("固有ベクトル2のノルム", numpy.linalg.norm(eig_vector[:, 1]))
+# print(numpy.linalg.norm(eig_vector[:, 1]) == 1)
+# print(numpy.linalg.norm(eig_vector[:, 1]) == 0.9999999999999999)

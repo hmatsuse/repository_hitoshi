@@ -1,0 +1,27 @@
+body {
+    background-color: aquamarine;
+    width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+li {
+    list-style-type: square;
+    margin: 10px;
+    color: darkslategrey;
+}
+
+a {
+    font-weight: bold;
+}
+
+.face {
+    color: darkblue;
+    /* color: black; */
+}
+
+.back {
+    color: darkblue;
+    /* color: black; */
+    opacity: 0.5;
+}
