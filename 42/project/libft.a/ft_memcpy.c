@@ -12,7 +12,24 @@
 
 #include <stdio.h>
 
-void	*ft_memcpy(void *buf1, const void *buf2, size_t n)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
+	register char *bbuf1 = dst;
+	register const char *bbuf2 = src;
+	register const char *t = bbuf2 + n;
 
+	while (bbuf2 != t)
+		*bbuf1++ = *bbuf2++;
+	return (bbuf1);
+}
+
+int		main(void)
+{
+	char buf[] = "ABCDEFG";
+	char buf2[] = "1ee3456789";
+
+	ft_memcpy(buf, buf2, 4);
+	printf("copied buf = %s\n", buf);
+
+	return (0);
 }
