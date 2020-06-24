@@ -20,11 +20,11 @@ void    ft_bzero(void *s, size_t n)
         *p++ = '\0';
 }
 
-int     main()
-{
-    char str[] = "123456789";
+// int     main()
+// {
+//     char str[] = "123456789";
 
-    ft_bzero(str + 2, 5);
-    printf("%s\n", str);
-    return (0);
-}
+//     ft_bzero(str + 2, 5);
+//     printf("%s\n", str);
+//     return (0);
+// }

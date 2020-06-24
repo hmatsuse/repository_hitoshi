@@ -16,20 +16,19 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
 	register char *bbuf1 = dst;
 	register const char *bbuf2 = src;
-	register const char *t = bbuf2 + n;
 
-	while (bbuf2 != t)
+	while (n-- > 0)
 		*bbuf1++ = *bbuf2++;
-	return (bbuf1);
+	return (dst);
 }
 
-int		main(void)
-{
-	char buf[] = "ABCDEFG";
-	char buf2[] = "1ee3456789";
+// int		main(void)
+// {
+// 	char buf[] = "ABCDEFG";
+// 	char buf2[] = "1ee3456789";
 
-	ft_memcpy(buf, buf2, 4);
-	printf("copied buf = %s\n", buf);
+// 	ft_memcpy(buf, buf2, 4);
+// 	printf("copied buf = %s\n", buf);
 
-	return (0);
-}
+// 	return (0);
+// }

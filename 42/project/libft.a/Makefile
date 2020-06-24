@@ -1,47 +1,20 @@
-NAME = libft.a
+PROGRAM = libft.a
 CC = gcc
-PART1 =
-PART2 =
-BONUS =
-ADDED =
-SRCS = $(PART1) $(PART2) $(BONUS) $(ADDED)
+SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c ft_memcmp.c ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c ft_strnstr.c ft_strncmp.c ft_atoi.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_tolower.c 
 OBJS = $(SRCS:.c=.o)
 FLAGS = -Wall -Wextra -Werror
 
-PART1 += ft_isalnum.c
-PART1 += ft_isalpha.c
-PART1 += ft_isascii.c
-PART1 += ft_isdigit.c
-PART1 += ft_isprint.c
-PART1 += ft_strlen.c
-PART1 += ft_toupper.c
-PART1 += ft_tolower.c
-PART1 += ft_strdup.c
-PART1 += ft_atoi.c
-
-
-
-
-PART2 +=
-
-
-BONUS +=
-
-
-ADDED +=
-
-
-$(NAME):
+$(PROGRAM):
 	$(CC) -c $(FLAGS) $(SRCS) -I libft.h
-	ar rcs $(NAME) $(OBJS)
+	ar rcs $(PROGRAM) $(OBJS)
 
-all: $(NAME)
+all: $(PROGRAM)
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(PROGRAM)
 
 re: fclean all
 

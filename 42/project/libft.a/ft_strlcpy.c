@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/23 13:20:58 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/24 16:52:54 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/24 17:10:22 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/24 18:23:34 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-void	*ft_memccpy(void *restrict dst, const void *restrict src, int c, size_t n)
+size_t ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
 {
-	register char *dest = dst;
-	register const char *ssrc = src;
-	const char ch = c;
+	char *dest = dst;
+	const char *ssrc = src;
+	size_t n = dstsize;
 
-	while (n-- > 0)
+	if (n != 0)
 	{
-		*dest++ = *ssrc++;
-		if (*ssrc == ch)
-			return(dst);
+		while (--n != 0)
+		{
+			if ((*dest++ = *ssrc++) == '\0')
+				break;
+		}
 	}
-	return(NULL);
+
+	if (n == 0)
+	{
+		if (dstsize != 0)
+			*dest = '\0';
+		while (*ssrc++)
+			;
+	}
+	return(ssrc - src - 1);
 }
-
-// int		main(void)
-// {
-// 	char buf[] = "ABCDEFGHIJ";
-// 	char buf2[] = "123456789";
-
-// 	ft_memccpy(buf, buf2, 'k', 7);
-// 	printf("copied buf = %s\n", buf);
-
-// 	return (0);
-// }
