@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/24 14:38:03 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/25 12:17:08 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/25 16:23:38 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/25 16:25:30 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memchr(const void *s, int c, size_t n)
+int		ft_min(int s1, int s2)
 {
-	const unsigned char *ss;
-	char ch;
-
-	ss = s;
-	ch = c;
-	while (n-- > 0)
-	{
-		if (*ss == ch)
-			return ((void *)s);
-		ss++;
-	}
-	return (NULL);
+	if (s1 < s2)
+		return (s1);
+	return (s2);
 }

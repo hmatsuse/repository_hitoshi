@@ -6,17 +6,19 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:16:58 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/24 16:59:38 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/25 12:06:59 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char *ss1 = s1;
-	const unsigned char *ss2 = s2;
+	const unsigned char *ss1;
+	const unsigned char *ss2;
 
+	ss1 = s1;
+	ss2 = s2;
 	while (n-- > 0)
 	{
 		if (*ss1 != *ss2)
@@ -24,5 +26,5 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 		ss1++;
 		ss2++;
 	}
-	return(0);
+	return (0);
 }

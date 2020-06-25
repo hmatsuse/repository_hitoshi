@@ -3,30 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmatsuse <hmatsuse@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/22 17:21:29 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/22 17:21:29 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/25 12:14:05 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/25 12:14:05 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 void    *ft_memset(void *b, int c, size_t len)
 {
-    const unsigned char uc = c;
-    unsigned char       *p = (unsigned char *)b;
+    char *p;
+    char ch;
 
+    p = b;
+    ch = c;
     while (len-- > 0)
-        *p++ = uc;
-    
+        *p++ = ch;
     return (b);
 }
-
-// int     main(void)
-// {
-//     char str[] = "0123456789";
-//     ft_memset(str+2, '/', 5);
-//     printf("%s\n", str);
-//     return (0);
-// }
