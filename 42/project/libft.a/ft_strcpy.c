@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/26 13:35:14 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/26 13:42:11 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/26 20:35:59 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/26 20:36:38 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isascii(int c)
+char	*ft_strcpy(char *ptr, const char *src)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	return (0);
+	size_t i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		ptr[i] = src[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

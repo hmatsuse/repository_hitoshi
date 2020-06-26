@@ -14,12 +14,14 @@
 
 void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	register char *bbuf1;
-	register const char *bbuf2;
+	char		*dest;
+	const char	*ssrc;
 
-	bbuf1 = dst;
-	bbuf2 = src;
+	dest = dst;
+	ssrc = src;
+	if (dst == src)
+		return (dst);
 	while (n-- > 0)
-		*bbuf1++ = *bbuf2++;
+		*dest++ = *ssrc++;
 	return (dst);
 }

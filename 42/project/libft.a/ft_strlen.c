@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 17:03:59 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/25 12:18:51 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/26 20:54:56 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 	while (s[i] != '\0')
