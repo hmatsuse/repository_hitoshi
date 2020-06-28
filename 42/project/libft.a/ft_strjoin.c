@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/24 17:10:22 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/28 22:06:10 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/28 15:15:22 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/28 21:57:43 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t di;
-	size_t si;
+	char	*ptr;
+	size_t	size;
+	size_t	i;
+	size_t	s;
 
-	if (!dst)
-		return ((size_t)NULL);
-	di = 0;
-	si = 0;
-	if (dstsize != 0)
-	{
-		while (src[si] != '\0' && di + 1 < dstsize)
-			dst[di++] = src[si++];
-		dst[di] = '\0';
-	}
-	return (ft_strlen(src));
+	if (!s1 || !s2)
+		return (NULL);
+	size = ft_strlen(s1) + ft_strlen(s2);
+	ptr = (char *)malloc(sizeof(char) * (size + 1));
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	s = 0;
+	while (s1[s] != '\0')
+		ptr[i++] = s1[s++];
+	s = 0;
+	while (s2[s] != '\0')
+		ptr[i++] = s2[s++];
+	ptr[i] = '\0';
+	return (ptr);
 }

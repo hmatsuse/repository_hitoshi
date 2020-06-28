@@ -20,6 +20,8 @@ char	*strdup(const char *s1);
 size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize);
 size_t	ft_strlen(const char *str);
 char	*ft_strcpy(char *ptr, const char *src);
+char	*ft_strchr(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 
 
