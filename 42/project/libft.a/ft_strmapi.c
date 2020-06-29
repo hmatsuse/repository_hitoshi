@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/29 11:57:48 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/29 12:39:05 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/29 20:59:35 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/29 21:04:15 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char			*dest;
-	const char		*ssrc;
-
-	if (dst <= src)
-		ft_memcpy(dst, src, len);
-	else
-	{
-		dest = dst + (len - 1);
-		ssrc = src + (len - 1);
-		while (len-- > 0)
-			*dest-- = *ssrc--;
-	}
-	return (dst);
+	
 }

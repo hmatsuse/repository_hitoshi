@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 11:22:24 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/26 12:12:15 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/29 16:59:07 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_atoi(const char *str)
 {
 	size_t	count;
-	long long	num;
+	long long int	num;
 
 	count = 0;
 	num = 0;
@@ -30,28 +30,12 @@ int		ft_atoi(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		num *= 10;
-		num += *str - 48;
+		num += (long long int)*str - 48;
 		str++;
 	}
 	if (count % 2 == 1)
 		num *= -1;
+	// if (num * -1 < -9223372036854775808 || num > 9223372036854775807)
+	// 	return (-1);
 	return ((int)num);
 }
-
-// int		main(void)
-// {
-// 	char	str[] = "123456789";
-// 	int		num;
-
-// 	num = ft_atoi(str);
-// 	printf("%d\n", num);
-// 	printf("%s => %d\n", "-123", ft_atoi("-123"));
-// 	printf("%s => %d\n", "3.14", ft_atoi("3.14"));
-// 	printf("%s => %d\n", "XYZ",	ft_atoi("XYZ"));
-// 	printf("%s => %d\n", "5G", ft_atoi("5G"));
-// 	printf("%s => %d\n", "G5", ft_atoi("G5"));
-// 	printf("%s => %d\n", "1 2 3", ft_atoi("1 2 3"));
-// 	printf("%s => %d\n", "    1", ft_atoi("    1"));
-// 	printf("%s => %d\n", "1,2,3", ft_atoi("1,2,3"));
-// 	return (0);
-// }
