@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/28 12:07:07 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/30 14:09:50 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/30 12:23:54 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/30 12:55:29 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_putchar_fd(char c, int fd)
 {
-	char		*ptr;
-	size_t		i;
-
-	if (!len)
-		return (NULL);
-	if (!s)
-		return (malloc(0));
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (len-- != 0)
-		ptr[i++] = s[start++];
-	ptr[i] = '\0';
-	return (ptr);
+	write(fd, &c, 1);
 }
