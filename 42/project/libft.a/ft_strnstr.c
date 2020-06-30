@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:02:44 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/25 20:36:37 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/30 19:34:08 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		if (*haystack == *needle)
 		{
 			ptr = haystack;
-			while (*haystack++ == needle[i])
+			while (*haystack++ == needle[i] && len)
 			{
 				if (needle[i + 1] == '\0')
 					return ((char *)ptr);

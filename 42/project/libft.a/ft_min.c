@@ -6,9 +6,11 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 16:23:38 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/25 16:25:30 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:02:26 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_min(int s1, int s2)
 {

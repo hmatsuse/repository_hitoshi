@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 11:22:24 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/29 16:59:07 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/30 21:46:28 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,26 @@
 
 int		ft_atoi(const char *str)
 {
-	size_t	count;
-	long long int	num;
+	int		sign;
+	int		num;
 
-	count = 0;
+	sign = 1;
 	num = 0;
 	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
-	while (*str == '-' || *str == '+')
+	if (*str == '-')
 	{
-		if (*str == '-')
-			count++;
+		sign = -1;
 		str++;
 	}
+	else if (*str == '+')
+		str++;
 	while (*str >= '0' && *str <= '9')
 	{
 		num *= 10;
-		num += (long long int)*str - 48;
+		num += *str - 48;
 		str++;
 	}
-	if (count % 2 == 1)
-		num *= -1;
-	// if (num * -1 < -9223372036854775808 || num > 9223372036854775807)
-	// 	return (-1);
-	return ((int)num);
+	num *= sign;
+	return (num);
 }

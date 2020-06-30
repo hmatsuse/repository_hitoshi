@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/25 12:14:05 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/25 12:14:05 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/30 17:16:11 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/30 17:17:02 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    *ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
-    char *p;
-    char ch;
+	char	*p;
+	char	ch;
 
-    p = b;
-    ch = c;
-    while (len-- > 0)
-        *p++ = ch;
-    return (b);
+	p = b;
+	ch = c;
+	while (len-- > 0)
+		*p++ = ch;
+	return (b);
 }

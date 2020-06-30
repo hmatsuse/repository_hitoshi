@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 18:08:33 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/29 20:46:13 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:01:31 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		is_minus(int *n, size_t *minus)
 	}
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char	*tmp;
 	int		num;

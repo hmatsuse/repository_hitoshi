@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/25 12:00:09 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/25 12:00:09 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/30 17:14:40 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/30 17:15:11 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-    char *p;
+	char	*p;
 
-    p = s;
-    while (n-- > 0)
-        *p++ = '\0';
+	p = s;
+	while (n-- > 0)
+		*p++ = '\0';
 }

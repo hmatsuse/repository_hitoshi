@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 12:40:47 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/30 13:07:20 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/30 14:20:02 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size_t i;
+	size_t	i;
 
 	if (!s)
 		return ((void)NULL);

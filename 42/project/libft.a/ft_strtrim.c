@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 16:59:50 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/28 21:52:19 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:03:17 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static size_t	check(char const *set, char const s1)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char			*ft_strtrim(char const *s1, char const *set)
 {
 	char			*ptr;
 	char			*start;

@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 13:47:59 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/29 18:07:08 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/06/30 14:24:49 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void		sep(char **tmp, const char *s, char c)
 	tmp[i] = 0;
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**tmp;
 	int		size;
