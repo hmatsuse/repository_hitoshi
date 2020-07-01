@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 18:08:33 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/06/30 17:01:31 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:30:35 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ char			*ft_itoa(int n)
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	num = n;
-	size = 2;
+	size = 1;
 	minus = 0;
 	is_minus(&n, &minus);
 	while (num /= 10)
 		size++;
 	size += minus;
-	if (!(tmp = (char *)malloc(sizeof(char) * size)))
+	if (!(tmp = (char *)malloc(sizeof(char) * (size + 1))))
 		return (NULL);
-	tmp[--size] = '\0';
+	tmp[size] = '\0';
 	while (size--)
 	{
 		tmp[size] = n % 10 + '0';
