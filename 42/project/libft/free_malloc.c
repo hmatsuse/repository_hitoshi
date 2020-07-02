@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   free_malloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/01 21:46:37 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/02 20:23:28 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/07/02 20:26:09 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/07/02 20:27:11 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	free_malloc(char **tmp, size_t i)
 {
-	t_list	*newlst;
-	t_list	*tmp;
+	size_t	j;
 
-	if (!lst || !f)
-		return (NULL);
-	if (!(newlst = ft_lstnew(f(lst->content))))
+	j = 0;
+	while (j < i)
 	{
-		ft_lstclear(&newlst, del);
-		return (NULL);
+		free(tmp[j]);
+		j++;
 	}
-	tmp = newlst;
-	while (lst->next)
-	{
-		if (!(tmp->next = ft_lstnew(f(lst->next->content))))
-		{
-			ft_lstclear(&newlst, del);
-			return (NULL);
-		}
-		lst = lst->next;
-		tmp = tmp->next;
-	}
-	return (newlst);
+	free(tmp);
 }

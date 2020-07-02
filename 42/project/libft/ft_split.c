@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 13:47:59 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/01 22:56:09 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/02 20:29:21 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	judgue(char s, char c)
+static size_t	judge(char s, char c)
 {
 	if (s == c)
 		return (0);
@@ -30,7 +30,7 @@ static size_t	count(char const *s, char c)
 	i = 0;
 	while (s[i] != '\0')
 	{
-		if (judgue(s[i], c) == 0)
+		if (judge(s[i], c) == 0)
 			flag = 1;
 		else if (flag == 1)
 		{
@@ -49,19 +49,19 @@ static char		*set(const char *s, char c)
 	char	*tmp;
 
 	count = 0;
-	while (s[count] != '\0' && judgue(s[count], c) == 1)
+	while (s[count] != '\0' && judge(s[count], c) == 1)
 		count++;
 	if (!(tmp = (char *)malloc(sizeof(char) * (count + 1))))
 		return (NULL);
 	count = 0;
 	i = 0;
-	while (s[count] != '\0' & judgue(s[count], c) == 1)
+	while (s[count] != '\0' & judge(s[count], c) == 1)
 		tmp[i++] = s[count++];
 	tmp[i] = '\0';
 	return (tmp);
 }
 
-static void		sep(char **tmp, const char *s, char c)
+static int		sep(char **tmp, const char *s, char c)
 {
 	size_t	flag;
 	size_t	i;
@@ -72,16 +72,22 @@ static void		sep(char **tmp, const char *s, char c)
 	a = 0;
 	while (s[a] != '\0')
 	{
-		if (judgue(s[a], c) == 0)
+		if (judge(s[a], c) == 0)
 			flag = 1;
 		else if (flag == 1)
 		{
-			tmp[i++] = set(&s[a], c);
+			if (!(tmp[i] = set(&s[a], c)))
+			{
+				free_malloc(tmp, i);
+				return (0);
+			}
+			i++;
 			flag = 0;
 		}
 		a++;
 	}
 	tmp[i] = 0;
+	return (1);
 }
 
 char			**ft_split(char const *s, char c)
@@ -94,6 +100,7 @@ char			**ft_split(char const *s, char c)
 	size = count(s, c);
 	if (!(tmp = (char **)malloc(sizeof(char *) * (size + 1))))
 		return (NULL);
-	sep(tmp, s, c);
+	if (sep(tmp, s, c) == 0)
+		return (NULL);
 	return (tmp);
 }
