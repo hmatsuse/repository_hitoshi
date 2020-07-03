@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 13:47:59 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/02 20:29:21 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/03 15:34:17 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char			**ft_split(char const *s, char c)
 	char	**tmp;
 	int		size;
 
-	if (!s || !c)
+	if (!s)
 		return (NULL);
 	size = count(s, c);
 	if (!(tmp = (char **)malloc(sizeof(char *) * (size + 1))))

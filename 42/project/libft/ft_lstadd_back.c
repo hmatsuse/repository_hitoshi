@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 19:24:06 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/02 15:38:53 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/03 14:06:08 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*tmp;
 
-	if (!lst || !new)
+	if (!new)
 		return ;
 	tmp = *lst;
 	if (!*lst)
