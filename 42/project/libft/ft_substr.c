@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/28 12:07:07 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/03 15:30:07 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/07 20:15:07 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t		i;
 
 	if (!s)
-		return ((char *)NULL);
-	if (!s)
-		return (malloc(0));
-	if ((start + len) > ft_strlen(s) || ft_strlen(s) < start)
+		return (NULL);
+	if (start > ft_strlen(s))
 		return (ft_strdup(""));
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if ((ft_strlen(s) - start) < len)
+		ptr = (char *)malloc(sizeof(char) * (ft_strlen(s) - (size_t)start + 1));
+	else
+		ptr = (char *)malloc(sizeof(char) * (len + 1));
 	if (!ptr)
 		return (NULL);
 	i = 0;

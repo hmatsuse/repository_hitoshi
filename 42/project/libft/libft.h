@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 17:08:17 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/02 20:27:33 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/07 20:13:34 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ int				ft_isascii(int c);
 int				ft_isdigit(int c);
 int				ft_isprint(int c);
 char			*ft_itoa(int n);
-void			*ft_memccpy(void *restrict dst, const void *restrict src,\
-				int c, size_t n);
+void			*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
-void			*ft_memcpy(void *restrict dst, const void *restrict src,\
-				size_t n);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t len);
 void			*ft_memset(void *b, int c, size_t len);
 int				ft_min(int s1, int s2);
@@ -44,10 +42,8 @@ char			*ft_strchr(const char *s, int c);
 char			*ft_strcpy(char *ptr, const char *src);
 char			*ft_strdup(const char *s1);
 char			*ft_strjoin(char const *s1, char const *s2);
-size_t			ft_strlcat(char *restrict dst, const char *restrict src,\
-				size_t dstsize);
-size_t			ft_strlcpy(char *restrict dst, const char *restrict src,\
-				size_t dstsize);
+size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlen(const char *s);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -73,6 +69,6 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),\
 				void (*del)(void *));
-void			free_malloc(char **tmp, size_t i);
+void			ft_free_malloc(char **tmp, size_t i);
 
 #endif

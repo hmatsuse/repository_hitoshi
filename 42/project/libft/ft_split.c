@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 13:47:59 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/03 15:34:17 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/06 20:55:59 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int		sep(char **tmp, const char *s, char c)
 		{
 			if (!(tmp[i] = set(&s[a], c)))
 			{
-				free_malloc(tmp, i);
+				ft_free_malloc(tmp, i);
 				return (0);
 			}
 			i++;

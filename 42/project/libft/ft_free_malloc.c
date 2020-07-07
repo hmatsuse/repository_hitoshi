@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/02 20:26:09 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/02 20:27:11 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/06 17:19:49 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_malloc(char **tmp, size_t i)
+void	ft_free_malloc(char **tmp, size_t i)
 {
 	size_t	j;
 
