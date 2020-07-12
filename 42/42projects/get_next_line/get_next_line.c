@@ -3,27 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmatsuse <hmatsuse@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 16:49:53 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/11 13:27:43 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/12 19:51:33 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdlib.h>
-#include "unistd.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <fcntl.h>
+#define BUFFER_SIZE 900
 
 int		get_next_line(int fd, char **line)
 {
 	static char		*buffer;
+	size_t			result;
 
-	if (!fd)
-		return (NULL);
+	// if (!fd)
+	// 	return (NULL);
 	if (!(buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (NULL);
-	buffer = read(fd, buffer, BUFFER_SIZE);
+	result = read(fd, buffer, BUFFER_SIZE);
+	printf("%d\n",result);
+	*line = buffer;
+
+	printf("%s\n", buffer);
+	// if (!(ft_strchr(buffer, '\n')))
+	return (0);
 }
+
+// 使う変数
 
 // 一週目
 // 1,read関数=BUFFER_SIZE分readで読み込む,読み込んだ分をbufに格納
