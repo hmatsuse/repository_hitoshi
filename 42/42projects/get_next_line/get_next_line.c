@@ -6,32 +6,54 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 16:49:53 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/12 19:51:33 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/13 20:19:53 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
-#define BUFFER_SIZE 900
+
+int		find(char *buff)
+{
+	size_t	i;
+
+	i = 0;
+	while(buff[i])
+	{
+		if (buff[i] == '\n')
+			return (i);
+		i++;
+	}
+	return(-1);
+}
 
 int		get_next_line(int fd, char **line)
 {
 	static char		*buffer;
+	char			*buf;
+	char			*tmp;
+	char			*save;
 	size_t			result;
+	size_t			index;
 
-	// if (!fd)
-	// 	return (NULL);
-	if (!(buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
-		return (NULL);
-	result = read(fd, buffer, BUFFER_SIZE);
-	printf("%d\n",result);
-	*line = buffer;
-
-	printf("%s\n", buffer);
-	// if (!(ft_strchr(buffer, '\n')))
+	if (!fd)
+		return (0);
+	if (!(buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+		return (0);
+	result = read(fd, buf, BUFFER_SIZE);
+	if (!buffer)
+		buffer = ft_strdup("");
+	save = ft_strjoin(buffer, buf);
+	if (find(save))
+	{
+		index = find(save);
+		if (!(*line = ft_substr(save, 0, index)))
+			return (-1);
+		if (!(tmp = ft_strdup(save + index + 1)))
+			return (-1);
+		free(buf);
+		buffer = tmp;
+		return(1);
+	}
 	return (0);
 }
 
