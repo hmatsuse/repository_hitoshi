@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:36:57 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/13 20:00:06 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/15 14:28:21 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <fcntl.h>
 
 int		get_next_line(int fd, char **line);
-char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
 char	*ft_strcpy(char *ptr, const char *src);
 char	*ft_strjoin(char const *s1, char const *s2);

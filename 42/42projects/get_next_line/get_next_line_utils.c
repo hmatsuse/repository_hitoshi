@@ -6,24 +6,11 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:39:59 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/13 19:59:41 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/15 14:28:16 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (1)
-	{
-		if (*s == c)
-			return ((char *)s);
-		if (*s == '\0')
-			break ;
-		s++;
-	}
-	return (NULL);
-}
 
 char	*ft_strdup(const char *s1)
 {
