@@ -15,12 +15,20 @@ int		main(int argc, char **argv)
 		while ((n = get_next_line(fd, &s)) >= 0)
 		{
 			printf("%s\n", s);
+			// printf("%s\n", s);
+			// printf("%s\n", "------;;;;");
 			free(s);
 			if (n == 0)
 				break ;
+			// if (n == 0)
+			// 	break ;
 		}
+		// get_next_line(fd, &s);
+		// printf("%s\n", "------");
 		// get_next_line(fd, &s);
 		// printf("%s\n", s);
 		close(fd);
 	// }
+	while(1)
+	{}
 }

@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/25 18:02:44 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/09 18:49:24 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:04:21 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
-int main()
-{
-	char s[] = "HelloWorld";
-	char s1[] = "Wor";
 
-	printf("%s\n", ft_strnstr(s, s1, 1));
+int		main()
+{
+	char s[] = "ajbsdchbahcd";
+	char look[] = "ajbsdchbahcdajbsdchbahcd";
+
+	printf("%s\n", ft_strnstr(s, look, 10000000));
 }

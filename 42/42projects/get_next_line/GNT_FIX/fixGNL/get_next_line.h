@@ -6,16 +6,16 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:36:57 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/15 14:28:21 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/16 21:39:48 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 int		get_next_line(int fd, char **line);
 char	*ft_strdup(const char *s1);

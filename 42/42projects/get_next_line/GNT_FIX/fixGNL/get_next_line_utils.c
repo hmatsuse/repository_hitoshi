@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:39:59 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/15 14:28:16 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/16 21:41:28 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s2[s] != '\0')
 		ptr[i++] = s2[s++];
 	ptr[i] = '\0';
+	free((void *)s1);
 	return (ptr);
 }
 

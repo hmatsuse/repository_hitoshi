@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 13:47:59 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/09 19:10:41 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/16 17:22:27 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,25 @@ char			**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	size = count(s, c);
+	printf ("%d\n", size);
 	if (!(tmp = (char **)malloc(sizeof(char *) * (size + 1))))
 		return (NULL);
 	if (sep(tmp, s, c) == 0)
 		return (NULL);
 	return (tmp);
+}
+
+int		main()
+{
+	char s[] = "ss";
+	char **tmp;
+	int i;
+
+	i = 0;
+	tmp = ft_split(s, '\0');
+	while (tmp[i] != '\0')
+	{
+		printf("%s\n", tmp[i]);
+		i++;
+	}
 }
