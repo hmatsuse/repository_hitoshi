@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hmatsuse <hmatsuse@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 16:49:53 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/16 22:34:43 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/17 14:56:10 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,18 @@ int		fd_read(char **save, char **line, char *buf, int ret)
 
 int		get_next_line(int fd, char **line)
 {
-	static char	*save;
+	static char	*save[255];
 	char		*buf;
 	int			ret;
 	int			r;
 
 	if (!(buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	if (!save)
-		save = ft_strdup("");
+	if (!save[fd])
+		save[fd] = ft_strdup("");
 	while ((ret = read(fd, buf, BUFFER_SIZE)) >= 0)
 	{
-		r = fd_read(&save, line, buf, ret);
+		r = fd_read(&save[fd], line, buf, ret);
 		if (r >= 0)
 			return (r);
 		if (r == -1)
