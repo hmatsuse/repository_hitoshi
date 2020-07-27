@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/27 20:22:19 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/26 13:42:15 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/26 13:51:54 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
+#include "libft.h"
 
-typedef struct	s_flag
+int		ft_isprint(int c)
 {
-	int		zero_or_space;
-	int		minus;
-	int		plus;
-	// int		bash;
-	// int		space;
-	int		width;
-	int		dot;
-	// int		dot_val;
-	char	character;
-	// int		printlen;
-	// int		slen;
-}				t_flag;
-
-#endif
+	if (32 <= c && c <= 126)
+		return (1);
+	return (0);
+}

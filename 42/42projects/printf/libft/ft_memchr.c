@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/27 20:22:19 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/24 14:38:03 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/30 18:57:35 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
+#include "libft.h"
 
-typedef struct	s_flag
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int		zero_or_space;
-	int		minus;
-	int		plus;
-	// int		bash;
-	// int		space;
-	int		width;
-	int		dot;
-	// int		dot_val;
-	char	character;
-	// int		printlen;
-	// int		slen;
-}				t_flag;
+	const unsigned char	*ss;
+	unsigned char		ch;
+	size_t				i;
 
-#endif
+	ss = (unsigned char *)s;
+	ch = (unsigned char)c;
+	i = 0;
+	while (n-- > 0)
+	{
+		if (ss[i] == ch)
+			return ((void *)&ss[i]);
+		i++;
+	}
+	return (NULL);
+}

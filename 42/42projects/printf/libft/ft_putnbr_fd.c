@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/27 20:22:19 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/30 13:09:58 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/06/30 14:00:35 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
+#include "libft.h"
 
-typedef struct	s_flag
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		zero_or_space;
-	int		minus;
-	int		plus;
-	// int		bash;
-	// int		space;
-	int		width;
-	int		dot;
-	// int		dot_val;
-	char	character;
-	// int		printlen;
-	// int		slen;
-}				t_flag;
+	int		num;
 
-#endif
+	if (n == -2147483648)
+	{
+		n = 147483648;
+		ft_putnbr_fd(-2, fd);
+	}
+	if (n < 0)
+	{
+		n *= -1;
+		write(fd, "-", 1);
+	}
+	if (n > 9)
+	{
+		num = n / 10;
+		ft_putnbr_fd(num, fd);
+		n %= 10;
+	}
+	if (n < 10)
+	{
+		n += '0';
+		write(fd, &n, 1);
+	}
+}

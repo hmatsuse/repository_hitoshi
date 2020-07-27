@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/27 20:22:19 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/23 13:20:58 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/07/07 20:06:37 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
+#include "libft.h"
 
-typedef struct	s_flag
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int		zero_or_space;
-	int		minus;
-	int		plus;
-	// int		bash;
-	// int		space;
-	int		width;
-	int		dot;
-	// int		dot_val;
-	char	character;
-	// int		printlen;
-	// int		slen;
-}				t_flag;
+	size_t				i;
+	unsigned char		*dest;
+	const unsigned char	*ssrc;
 
-#endif
+	i = 0;
+	dest = (unsigned char *)dst;
+	ssrc = (unsigned char *)src;
+	while (n > 0)
+	{
+		dest[i] = ssrc[i];
+		if (ssrc[i] == (unsigned char)c)
+			return (&dst[i + 1]);
+		n--;
+		i++;
+	}
+	return (NULL);
+}

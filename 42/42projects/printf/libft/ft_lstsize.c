@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/27 20:22:19 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/07/01 18:45:41 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/07/02 16:08:33 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
+#include "libft.h"
 
-typedef struct	s_flag
+int		ft_lstsize(t_list *lst)
 {
-	int		zero_or_space;
-	int		minus;
-	int		plus;
-	// int		bash;
-	// int		space;
-	int		width;
-	int		dot;
-	// int		dot_val;
-	char	character;
-	// int		printlen;
-	// int		slen;
-}				t_flag;
+	int		i;
 
-#endif
+	if (!lst)
+		return (0);
+	i = 1;
+	while (lst->next)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}

@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/27 20:22:19 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/29 20:59:35 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/07/14 16:24:50 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
+#include "libft.h"
 
-typedef struct	s_flag
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		zero_or_space;
-	int		minus;
-	int		plus;
-	// int		bash;
-	// int		space;
-	int		width;
-	int		dot;
-	// int		dot_val;
-	char	character;
-	// int		printlen;
-	// int		slen;
-}				t_flag;
+	char			*tmp;
+	size_t			size;
+	unsigned int	i;
 
-#endif
+	if (!s || !f)
+		return (NULL);
+	size = ft_strlen(s);
+	if (!(tmp = (char *)malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		tmp[i] = f(i, s[i]);
+		i++;
+	}
+	tmp[i] = '\0';
+	return (tmp);
+}

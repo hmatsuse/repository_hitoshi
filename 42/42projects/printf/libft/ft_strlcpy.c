@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/27 20:22:19 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/06/24 17:10:22 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/07/07 20:13:16 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
+#include "libft.h"
 
-typedef struct	s_flag
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int		zero_or_space;
-	int		minus;
-	int		plus;
-	// int		bash;
-	// int		space;
-	int		width;
-	int		dot;
-	// int		dot_val;
-	char	character;
-	// int		printlen;
-	// int		slen;
-}				t_flag;
+	size_t di;
+	size_t si;
 
-#endif
+	if (!dst)
+		return ((size_t)NULL);
+	di = 0;
+	si = 0;
+	if (dstsize != 0)
+	{
+		while (src[si] != '\0' && di + 1 < dstsize)
+			dst[di++] = src[si++];
+		dst[di] = '\0';
+	}
+	return (ft_strlen(src));
+}
