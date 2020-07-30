@@ -6,38 +6,18 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 14:52:13 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/27 20:22:56 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/30 21:12:06 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
-
-int		c(char **format, va_list ap)
-{
-	ft_putchar_fd(va_arg(ap, int), 1);
-	return (0);
-}
-
-int		set_flag(char **format, t_flag *flag)
-{
-	if (**format == '-')
-		flag->minus = '-';
-	if (**format == '0')
-		flag->zero_or_space = '0';
-	if (**format == '+')
-		flag->plus = '+';
-	if (**format == '.')
-		flag->dot = '.';
-	return (0);
-}
 
 int		reset_flag(t_flag *flag)
 {
 	flag->zero_or_space = ' ';
 	flag->minus = 0;
 	flag->plus = 0;
-	flag->width = 0;
+	flag->width = -1;
 	flag->character = 0;
 	return (0);
 }
@@ -45,11 +25,11 @@ int		reset_flag(t_flag *flag)
 int		check_char(char **format, va_list ap, t_flag *flag)
 {
 	reset_flag(flag);
-	if (**format == '-' || **format == '+' || \
-	**format == '0' || **format == '.')
-		set_flag(ap, &flag);
-	if (**format == 'c')
-		c(format, ap);
+	set_flag(format, flag);
+	set_width(format, flag);
+	set_char(format, flag);
+	print_char(format, ap, flag);
+	// print_num();
 	(*format)++;
 	return (0);
 }
@@ -62,6 +42,7 @@ int		check(char *format, va_list ap, t_flag *flag)
 		{
 			format++;
 			check_char(&format, ap, flag);
+			reset_flag(flag);
 		}
 		else
 		{
@@ -91,7 +72,16 @@ int		ft_printf(const char *format, ...)
 
 int		main(void)
 {
-	ft_printf("ab%cde%cf\n", '+', '-');
-	printf("ab%cde%cf\n", '+', '-');
+	ft_printf("ab%-9cdef\n", '0');
+	printf("ab%-9cdef\n", '0');
+	ft_printf("ab%9cdef\n", '0');
+	printf("ab%9cdef\n", '0');
+	ft_printf("-----------\n");
+	ft_printf("ab%-4cdef\n", '0');
+	printf("ab%-4cdef\n", '0');
+	ft_printf("ab%4cdef\n", '0');
+	printf("ab%4cdef\n", '0');
+	// printf("ab%cde%-10c%sf\n", '+', '-', "Hello World");
+	// printf("ab%cde%10c%15sf\n", '+', '-', "Hello World");
 	return (0);
 }
