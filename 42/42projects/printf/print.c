@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 19:42:32 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/30 21:05:18 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/31 18:47:00 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,47 @@ void	print_sp_or_zr(char	sp_or_zr, int sp_zr_len)
 		ft_putchar_fd(sp_or_zr, 1);
 }
 
-void	print_char(char **format, va_list ap, t_flag *flag)
+void	print_c(char **format, va_list ap, t_flag *flag)
 {
 	int		sp_zr_len;
 
-	sp_zr_len = 0;
-	if (flag->character == 'c')
+	sp_zr_len = flag->width - 1;
+	if (flag->minus == 1 && sp_zr_len > 1)
 	{
-		// printf("%c\n", flag->character);
-		// printf("----\n");
-		if (flag->width == 0)
-			return;
-		else if (flag->width > 1)
-		{
-			sp_zr_len = flag->width - 1;
-			if (flag->minus == 1)
-			{
-				ft_putchar_fd(va_arg(ap, int), 1);
-				print_sp_or_zr(flag->zero_or_space, sp_zr_len);
-			}
-			if (flag->minus == 0)
-			{
-				print_sp_or_zr(flag->zero_or_space, sp_zr_len);
-				ft_putchar_fd(va_arg(ap, int), 1);
-			}
-		}
-		else
-			ft_putchar_fd(va_arg(ap, int), 1);
+		ft_putchar_fd(va_arg(ap, int), 1);
+		print_sp_or_zr(flag->zero_or_space, sp_zr_len);
 	}
+	else if (flag->minus == 0 && sp_zr_len > 1)
+	{
+		print_sp_or_zr(flag->zero_or_space, sp_zr_len);
+		ft_putchar_fd(va_arg(ap, int), 1);
+	}
+	else
+		ft_putchar_fd(va_arg(ap, int), 1);
+}
+
+void	print_s(char **format, va_list ap, t_flag *flag)
+{
+	int		sp_zr_len;
+	char	*ap_tmp;
+
+	ap_tmp = va_arg(ap, char *); 
+	sp_zr_len = flag->width - (int)ft_strlen(ap_tmp);
+	if (flag->minus == 1 && sp_zr_len > 0)
+	{
+		ft_putstr_fd(ap_tmp,1);
+		print_sp_or_zr(flag->zero_or_space, sp_zr_len);
+	}
+	else if (flag->minus == 0 && sp_zr_len > 0)
+	{
+		print_sp_or_zr(flag->zero_or_space, sp_zr_len);
+		ft_putstr_fd(ap_tmp, 1);
+	}
+	else
+		ft_putstr_fd(ap_tmp, 1);
 }
 // void	print_num(char **format, va_list *ap, t_flag flag)
 // {
 
 // }
-	// if (flag->character == 's')
 	// if (flag->character == '%')

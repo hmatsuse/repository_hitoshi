@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   print_concierge.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/30 12:40:47 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/31 17:47:25 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/07/31 17:44:18 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/07/31 18:37:49 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	print_concierge(char **format, va_list ap, t_flag *flag)
 {
-	size_t	i;
-
-	if (!s)
-		return ((void)NULL);
-	i = 0;
-	while (s[i] != '\0')
-		write(fd, &s[i++], 1);
+	if (flag->character == 'c')
+		print_c(format, ap ,flag);
+	if (flag->character == 's')
+		print_s(format, ap, flag);
+	if (flag->character == '%')
+		ft_putchar_fd('%', 1);
+	// if (**format == 'c')
 }

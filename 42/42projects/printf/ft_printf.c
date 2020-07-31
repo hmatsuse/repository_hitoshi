@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 14:52:13 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/30 21:12:06 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/07/31 21:10:30 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		reset_flag(t_flag *flag)
 	flag->plus = 0;
 	flag->width = -1;
 	flag->character = 0;
+	flag->dot = 0;
+	flag->dot_width = 0;
 	return (0);
 }
 
@@ -28,7 +30,8 @@ int		check_char(char **format, va_list ap, t_flag *flag)
 	set_flag(format, flag);
 	set_width(format, flag);
 	set_char(format, flag);
-	print_char(format, ap, flag);
+	set_dot(format, flag);
+	print_concierge(format, ap, flag);
 	// print_num();
 	(*format)++;
 	return (0);
@@ -68,20 +71,4 @@ int		ft_printf(const char *format, ...)
 	free(flag);
 	flag = NULL;
 	return (print_len);
-}
-
-int		main(void)
-{
-	ft_printf("ab%-9cdef\n", '0');
-	printf("ab%-9cdef\n", '0');
-	ft_printf("ab%9cdef\n", '0');
-	printf("ab%9cdef\n", '0');
-	ft_printf("-----------\n");
-	ft_printf("ab%-4cdef\n", '0');
-	printf("ab%-4cdef\n", '0');
-	ft_printf("ab%4cdef\n", '0');
-	printf("ab%4cdef\n", '0');
-	// printf("ab%cde%-10c%sf\n", '+', '-', "Hello World");
-	// printf("ab%cde%10c%15sf\n", '+', '-', "Hello World");
-	return (0);
 }
