@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 13:10:16 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/31 21:08:09 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/01 17:31:01 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 void set_dot_width(char **format, t_flag *flag)
 {
-	// int	tmp_dot_width;
+	int	tmp_dot_width;
 
-	// tmp_dot_width = flag->dot_width;
-	// printf("--------\n");
+	tmp_dot_width = 0;
 	while (ft_isdigit(**format))
 	{
-		flag->dot_width = (flag->dot_width * 10) + (**format - '0');
+		tmp_dot_width = (tmp_dot_width * 10) + (**format - '0');
+		flag->dot_width = tmp_dot_width;
 		(*format)++;
 	}
-	(*format)--;
 }
 
-void	set_width(char **format, t_flag *flag)
+void	set_width(char **format, va_list ap, t_flag *flag)
 {
 	int tmp_width;
 
@@ -37,17 +36,38 @@ void	set_width(char **format, t_flag *flag)
 		flag->width = tmp_width;
 		(*format)++;
 	}
-}
-
-void	set_dot(char **format, t_flag *flag)
-{
-	if (**format == '.')
+	if (**format == '*')
 	{
-		flag->dot = 1;
+		flag->width = va_arg(ap, int);
+		if (flag->width < 0)
+		{
+			flag->width *= -1;
+			flag->minus = 1;
+			flag->zero_or_space = ' ';
+		}
 		(*format)++;
 	}
-	if (ft_isdigit(**format) && flag->dot == 1)
-		set_dot_width(format, flag);
+}
+
+void	set_dot(char **format, va_list ap, t_flag *flag)
+{
+	while (**format == '.' || ft_isdigit(**format))
+	{
+		if (**format =='.')
+		{
+			flag->dot = 1;
+			(*format)++;
+		}
+		if (ft_isdigit(**format) && flag->dot == 1)
+			set_dot_width(format, flag);
+	}
+	if (**format == '*')
+	{
+		flag->dot_width = va_arg(ap, int);
+		if (flag->dot_width < 0)
+			flag->dot = 0;
+		(*format)++;
+	}
 }
 
 void	set_flag(char **format, t_flag *flag)

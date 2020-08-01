@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 14:52:13 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/31 21:10:30 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/01 17:32:58 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int		check_char(char **format, va_list ap, t_flag *flag)
 {
 	reset_flag(flag);
 	set_flag(format, flag);
-	set_width(format, flag);
+	set_width(format, ap, flag);
+	set_dot(format, ap, flag);
 	set_char(format, flag);
-	set_dot(format, flag);
 	print_concierge(format, ap, flag);
 	// print_num();
 	(*format)++;

@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/07/31 20:56:59 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/01 19:29:39 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,23 @@ typedef struct	s_flag
 	// int		printlen;
 	// int		slen;
 }				t_flag;
-void	set_width(char **format, t_flag *flag);
-void	set_flag(char **format, t_flag *flag);
-void	set_char(char **format, t_flag *flag);
-void	set_dot(char **format, t_flag *flag);
 
 int		check_char(char **format, va_list ap, t_flag *flag);
 
+// SET FUNCTIONS
+void	set_flag(char **format, t_flag *flag);
+void	set_width(char **format, va_list ap, t_flag *flag);
+void	set_dot(char **format, va_list ap, t_flag *flag);
+void	set_char(char **format, t_flag *flag);
+
+// PRINT FUNCTIONS
 void	print_concierge(char **format, va_list ap, t_flag *flag);
 void	print_c(char **format, va_list ap, t_flag *flag);
 void	print_s(char **format, va_list ap, t_flag *flag);
-// void	print_sp_or_zr(char	sp_or_zr, int sp_zr_len);
+void	print_d(char **format, va_list ap, t_flag *flag);
+
+// UTILS FUNCTIONS
+void	ft_putnstr(char *ap_tmp, int len);
+int		ft_min(int	ap_tmp, int dot_width);
 
 #endif
