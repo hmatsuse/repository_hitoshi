@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 19:42:32 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/01 20:03:07 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/03 15:24:56 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	print_d(char **format, va_list ap, t_flag *flag)
 	ap_tmp = ft_itoa(tmp);
 	ap_tmp_len = ft_strlen(ap_tmp);
 	sp_zr_len = flag->width - ap_tmp_len;
-	if (flag->dot == 1 && flag->dot_width > ap_tmp_len);
+	if (flag->dot == 1 && flag->dot_width > ap_tmp_len)
 		sp_zr_len_dot = flag->dot_width - ap_tmp_len;
 	if (flag->minus == 1 && sp_zr_len > 0)
 	{
