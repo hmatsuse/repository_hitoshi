@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 14:52:13 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/01 17:32:58 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:29:09 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int		check_char(char **format, va_list ap, t_flag *flag)
 	set_width(format, ap, flag);
 	set_dot(format, ap, flag);
 	set_char(format, flag);
-	print_concierge(format, ap, flag);
-	// print_num();
+	print_concierge(ap, flag);
 	(*format)++;
 	return (0);
 }
@@ -49,7 +48,7 @@ int		check(char *format, va_list ap, t_flag *flag)
 		}
 		else
 		{
-			ft_putchar_fd(*format, 1);
+			ft_putchar_fd_len(*format, 1, flag);
 			format++;
 		}
 	}
@@ -60,15 +59,16 @@ int		ft_printf(const char *format, ...)
 {
 	va_list ap;
 	t_flag	*flag;
-	int		print_len;
+	int		printlen;
 
 	if (!(flag = malloc(sizeof(t_flag))))
 		return (-1);
 	ft_bzero(flag, sizeof(t_flag));
 	va_start(ap, format);
-	print_len = check((char *)format, ap, flag);
+	check((char *)format, ap, flag);
 	va_end(ap);
+	printlen = flag->printlen;
 	free(flag);
 	flag = NULL;
-	return (print_len);
+	return (printlen);
 }

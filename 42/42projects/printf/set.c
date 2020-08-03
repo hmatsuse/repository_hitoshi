@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 13:10:16 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/03 16:44:29 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/03 22:03:54 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,10 @@ void	set_char(char **format, t_flag *flag)
 		flag->character = 'd';
 	if (**format == 'p')
 		flag->character = 'p';
+	if (**format == 'i')
+		flag->character = 'i';
+	if (**format == 'u')
+		flag->character = 'u';
 	if (**format == 'x')
 		flag->character = 'x';
 	if (**format == 'X')

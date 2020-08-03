@@ -6,22 +6,22 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 14:06:54 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/03 16:41:22 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:05:36 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnstr(char *ap_tmp, int len)
+void	ft_putnstr(char *ap_tmp, int len ,t_flag *flag)
 {
 	int	i;
 
 	i = 0;
 	while (ap_tmp[i] != '\0' && i < len)
 	{
-		write(1, &ap_tmp[i], 1);
+		ft_putchar_fd_len(ap_tmp[i], 1, flag);
 		i++;
-	}	
+	}
 }
 
 int		ft_min(int	ap_tmp, int dot_width)
@@ -31,8 +31,7 @@ int		ft_min(int	ap_tmp, int dot_width)
 	return (ap_tmp);
 }
 
-
-static void		is_lminus(long long *n, size_t *minus)
+void	is_lminus(long long *n, size_t *minus)
 {
 	if (*n < 0)
 	{
@@ -68,4 +67,10 @@ char			*ft_litoa(long long n)
 	if (minus)
 		tmp[0] = '-';
 	return (tmp);
+}
+
+void	ft_putchar_fd_len(char c, int fd, t_flag *flag)
+{
+	write(fd, &c, 1);
+	flag->printlen += 1;
 }
