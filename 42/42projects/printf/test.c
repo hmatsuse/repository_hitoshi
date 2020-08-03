@@ -2,11 +2,7 @@
 
 int		main(void)
 {
-	int i = 0;
-	// (1 < 2 && 1 < 8 ? printf("+\n") : printf("-\n"));
-	(1 < 2 && 1 < 8 ? i++ : 0);
-	printf("%d\n", i);
-	// c
+	// // c
 	// printf("[-----c------]\n");
 	// ft_printf("%012cll  %%c%c  l%9cs\n", '9', 'x', '?');
 	// printf("%012cll  %%c%c  l%9cs\n", '9', 'x', '?');
@@ -28,7 +24,7 @@ int		main(void)
 	// ft_printf("-------------\n");
 	// ft_printf("\n\n");
 
-	// s
+	// // s
 	// printf("[-----s------]\n");
 	// ft_printf("%10s;;;%%s%s\n", "lllll", "test");
 	// printf("%10s;;;%%s%s\n", "lllll", "test");
@@ -47,11 +43,23 @@ int		main(void)
 	// ft_printf("-------------\n");
 
 	// d
-	// printf("[-----d------]\n");
-	// ft_printf("%0-10d\n", -10);
-	// printf("%0-10d\n", -10);
+	printf("[-----------]\n");
+	ft_printf("%0-10d\n", -10);
+	printf("%0-10d\n", -10);
+	printf("[-----------]\n");
+	ft_printf("%010d\n", -10);
+	printf("%010d\n", -10);
+	printf("[-----------]\n");
+	ft_printf("%-10dABC%010.*s\n", 234, 3, "OOOOOO");
+	printf("%-10dABC%010.*s\n", 234, 3, "OOOOOO");
+	printf("[-----------]\n");
+	ft_printf("%010.6d\n", -234);
+	printf("%010.6d\n", -234);
+	printf("[-----------]\n");
+	ft_printf("%010.2d\n", -234);
+	printf("%010.2d\n", -234);
 
-	// *
+	// // *
 	// ft_printf("%*s\n", 3, "aaaa");
 	// printf("%*s\n", 3, "aaaa");
 	// ft_printf("-------------\n");

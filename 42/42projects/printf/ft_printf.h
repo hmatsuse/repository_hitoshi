@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/01 19:29:39 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/03 16:18:27 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "./libft/libft.h"
 # include <stdarg.h>
 
+# define MAX(x, y) (x > y ? x : y)
 typedef struct	s_flag
 {
 	int		zero_or_space;
