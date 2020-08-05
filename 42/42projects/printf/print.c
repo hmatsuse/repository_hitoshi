@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 19:42:32 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/03 23:11:16 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/05 17:02:56 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,11 @@ void	print_d(va_list ap, t_flag *flag)
 	}
 	else
 		sp_zr_len = flag->width - MAX(ap_tmp_len, flag->dot_width);
-	sp_zr_len = (sp_zr_len < 0 ? sp_zr_len * -1 : sp_zr_len);
+	// sp_zr_len = (sp_zr_len < 0 ? sp_zr_len * -1 : sp_zr_len);
 	if (flag->dot == 1 && flag->dot_width > ap_tmp_len)
 		sp_zr_len_dot = flag->dot_width - ap_tmp_len;
 	else
 		sp_zr_len_dot = 0;
-	printf("flag->minus = %d\n", flag->minus);
-	printf("flag->dot = %d\n", flag->dot);
-	printf("is_minus = %d\n", is_minus);
-	printf("sp_zr_len = %d\n", sp_zr_len);
 	if (flag->minus == 1 && sp_zr_len > 0 && is_minus == 1)
 	{
 		if (flag->dot == 1)

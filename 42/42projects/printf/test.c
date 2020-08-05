@@ -38,8 +38,8 @@ int		main(void)
 	// ft_printf("%-10.2saaa%013....2s\n", "aaaaaaaaaaa", "bbbb");
 	// printf("%-10.2saaa%013....2s\n", "aaaaaaaaaaa", "bbbb");
 	// ft_printf("-------------\n");
-	// ft_printf("qqq%10..3.2s\n", "aaaaaaaaaaa", "kkkkk");
-	// printf("qqq%10..3.2s\n", "aaaaaaaaaaa", "kkkkk");
+	// ft_printf("qqq%30.20s\n", "aaaaaaaaaaa", "kkkkk");
+	// printf("qqq%30.20s\n", "aaaaaaaaaaa", "kkkkk");
 	// ft_printf("-------------\n");
 
 	// // d
@@ -58,8 +58,8 @@ int		main(void)
 	// printf("[-----------]\n");
 	// ft_printf("%010.2d\n", -234);
 	// printf("%010.2d\n", -234);
-	ft_printf("%0-3.7d\n", -2375);
-	printf("%0-3.7d\n", -2375);
+	// ft_printf("%u\n", -10);
+	// printf("%u\n", -10);
 
 	// ft_printf("%.*u\n", -1, 12345);
 	// printf("%.*u\n", -1, 12345);
@@ -81,29 +81,35 @@ int		main(void)
 	// ft_printf("-------------\n");
 
 	// (sp_zr_len = (sp_zr_len < 0 ? sp_zr_len * -1 : sp_zr_len));
-	// // p
-	// printf("[-----p------]\n");
-	// ft_printf("%p\n", "Hello World!");
-	// printf("%p\n", "Hello World!");
-	// printf("-------------\n");
-	// ft_printf("%p\n", 17);
-	// printf("%p\n", 17);
+	// p
+	printf("[-----p------]\n");
+	ft_printf("%p\n", "Hello World!");
+	printf("%p\n", "Hello World!");
+	printf("-------------\n");
+	ft_printf("%p\n", 17);
+	printf("%p\n", 17);
 
-	// // x
-	// printf("[-----x------]\n");
-	// ft_printf("%x\n", "Hello World!");
-	// printf("%x\n", "Hello World!");
-	// printf("-------------\n");
-	// ft_printf("%x\n", 100);
-	// printf("%x\n", 100);
+	// x
+	printf("[-----x------]\n");
+	ft_printf("%x\n", "Hello World!");
+	printf("%x\n", "Hello World!");
+	printf("-------------\n");
+	ft_printf("%x\n", 100);
+	printf("%x\n", 100);
 
-	// // X
-	// printf("[------X-----]\n");
-	// ft_printf("%X\n", "Hello World!");
-	// printf("%X\n", "Hello World!");
-	// printf("-------------\n");
-	// ft_printf("%X\n", 200);
-	// printf("%X\n", 200);
+	// X
+	printf("[------X-----]\n");
+	ft_printf("%X\n", "Hello World!");
+	printf("%X\n", "Hello World!");
+	printf("-------------\n");
+	ft_printf("%X\n", 200);
+	printf("%X\n", 200);
+	printf("-------------\n");
+	ft_printf("%02.7X\n", 3267);
+	printf("%02.7X\n", 3267);
+	printf("-------------\n");
+	ft_printf("%03.3X\n", 6983);
+	printf("%03.3X\n", 6983);
 
 	return (0);
 }

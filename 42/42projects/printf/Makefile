@@ -3,7 +3,7 @@ CC = gcc
 RM = rm -f
 SRCS = ft_printf.c print.c print_concierge.c set.c utils.c adress_cul.c
 OBJS = $(SRCS:.c=.o)
-CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
