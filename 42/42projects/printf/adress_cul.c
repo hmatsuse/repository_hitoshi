@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 17:39:28 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/06 16:36:34 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/06 18:24:43 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void	adress_cul(unsigned long tmp, char *src, t_flag *flag)
 		put_adress_p(str, flag);
 	else
 		put_adress(str, flag);
+	free(str);
 }

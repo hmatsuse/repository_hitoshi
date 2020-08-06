@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 17:44:18 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/06 16:50:50 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/06 17:44:50 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	print_concierge(va_list ap, t_flag *flag)
 	if (flag->character == 'X')
 		print_adress(ap, flag);
 	if (flag->character == '%')
-		ft_putchar_fd('%', 1);
+		print_percent(flag);
 }

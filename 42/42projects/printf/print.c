@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 19:42:32 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/06 16:50:10 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/06 18:22:08 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	print_c(va_list ap, t_flag *flag)
 	int		sp_zr_len;
 
 	sp_zr_len = flag->width - 1;
-	if (flag->minus == 1 && sp_zr_len > 1)
+	if (flag->minus == 1 && sp_zr_len > 0)
 	{
 		ft_putchar_fd_len(va_arg(ap, int), 1, flag);
 		print_sp_or_zr(flag->zero_or_space, sp_zr_len, flag);
 	}
-	else if (flag->minus == 0 && sp_zr_len > 1)
+	else if (flag->minus == 0 && sp_zr_len > 0)
 	{
 		print_sp_or_zr(flag->zero_or_space, sp_zr_len, flag);
 		ft_putchar_fd_len(va_arg(ap, int), 1, flag);

@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/06 16:50:04 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/06 17:34:24 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	print_s(va_list ap, t_flag *flag);
 void	print_d(va_list ap, t_flag *flag);
 void	print_adress(va_list ap, t_flag *flag);
 void	print_sp_or_zr(char	sp_or_zr, int sp_zr_len, t_flag *flag);
+void	print_percent(t_flag *flag);
 
 void	adress_cul(unsigned long tmp, char *src, t_flag *flag);
 

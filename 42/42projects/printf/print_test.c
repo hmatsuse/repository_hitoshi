@@ -21,7 +21,18 @@ int		main(void)
 	// ft_printf("-------------\n");
 	// ft_printf("ab%cde%10c%15sf\n", '+', '-', "Hello World");
 	// printf("ab%cde%10c%15sf\n", '+', '-', "Hello World");
-	// ft_printf("-------------\n");
+	ft_printf("-------------\n");
+	ft_printf("[%c]\n", 'a');
+	printf("[%c]\n", 'a');
+	ft_printf("-------------\n");
+	ft_printf("[%5c]\n", 'a');
+	printf("[%5c]\n", 'a');
+	ft_printf("-------------\n");
+	ft_printf("[%-3c]\n", 'a');
+	printf("[%-3c]\n", 'a');
+	ft_printf("-------------\n");
+	ft_printf("[%2c]\n", 'a');
+	printf("[%2c]\n", 'a');
 	// ft_printf("\n\n");
 
 	// // s
@@ -80,44 +91,67 @@ int		main(void)
 	// printf("%0*.*sl\n", 10, 3, "kkkkkk");
 	// ft_printf("-------------\n");
 
-	// (sp_zr_len = (sp_zr_len < 0 ? sp_zr_len * -1 : sp_zr_len));
-	// p
-	printf("[-----p------]\n");
-	ft_printf("%p\n", "Hello World!");
-	printf("%p\n", "Hello World!");
-	printf("-------------\n");
-	ft_printf("%p\n", 17);
-	printf("%p\n", 17);
+	// // p
+	// printf("[-----p------]\n");
+	// ft_printf("%p\n", "Hello World!");
+	// printf("%p\n", "Hello World!");
+	// printf("-------------\n");
+	// ft_printf("%p\n", 17);
+	// printf("%p\n", 17);
 
-	// x
-	printf("[-----x------]\n");
-	ft_printf("%x\n", "Hello World!");
-	printf("%x\n", "Hello World!");
-	printf("-------------\n");
-	ft_printf("%x\n", 100);
-	printf("%x\n", 100);
+	// // x
+	// printf("[-----x------]\n");
+	// ft_printf("%x\n", "Hello World!");
+	// printf("%x\n", "Hello World!");
+	// printf("-------------\n");
+	// ft_printf("%x\n", 100);
+	// printf("%x\n", 100);
 
-	// X
-	printf("[------X-----]\n");
-	ft_printf("%X\n", "Hello World!");
-	printf("%X\n", "Hello World!");
-	printf("-------------\n");
-	ft_printf("%X\n", 200);
-	printf("%X\n", 200);
-	printf("-------------\n");
-	ft_printf("%02.7X\n", 3267);
-	printf("%02.7X\n", 3267);
-	printf("-------------\n");
-	ft_printf("%03.3X\n", 6983);
-	printf("%03.3X\n", 6983);
-	printf("-------------\n");
-	ft_printf("%08.3X\n", 8375);
-	printf("%08.3X\n", 8375);
-	printf("-------------\n");
-	ft_printf("%.X\n", 0);
-	printf("%.X\n", 0);
-	printf("-------------\n");
-	ft_printf("[%5p]\n", 0);
-	printf("[%5p]\n", 0);
+	// // X
+	// printf("[------X-----]\n");
+	// ft_printf("%X\n", "Hello World!");
+	// printf("%X\n", "Hello World!");
+	// printf("-------------\n");
+	// ft_printf("%X\n", 200);
+	// printf("%X\n", 200);
+	// printf("-------------\n");
+	// ft_printf("%02.7X\n", 3267);
+	// printf("%02.7X\n", 3267);
+	// printf("-------------\n");
+	// ft_printf("%03.3X\n", 6983);
+	// printf("%03.3X\n", 6983);
+	// printf("-------------\n");
+	// ft_printf("%08.3X\n", 8375);
+	// printf("%08.3X\n", 8375);
+	// printf("-------------\n");
+	// ft_printf("%.X\n", 0);
+	// printf("%.X\n", 0);
+	// printf("-------------\n");
+	// ft_printf("[%5p]\n", 0);
+	// printf("[%5p]\n", 0);
+
+	// %
+	// printf("[------ps-----]\n");
+	// ft_printf("[%5]\n");
+	// printf("[%5]\n");
+	// printf("-----------\n");
+	// ft_printf("[%5%]\n");
+	// printf("[%5%]\n");
+	// printf("-----------\n");
+	// ft_printf("[%-5%]\n");
+	// printf("[%-5%]\n");
+	// printf("-----------\n");
+	// ft_printf("[%-5.2%]\n");
+	// printf("[%-5.2%]\n");
+	// printf("-----------\n");
+	// ft_printf("[%-5.%]\n");
+	// printf("[%-5.%]\n");
+	// printf("-----------\n");
+	// ft_printf("[%-5.%]\n", 9);
+	// printf("[%-5.%]\n", 9);
+	// printf("-----------\n");
+	// ft_printf("[%-5.9%]\n", 9);
+	// printf("[%-5.9%]\n", 9);
+
 	return (0);
 }
