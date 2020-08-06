@@ -110,6 +110,14 @@ int		main(void)
 	printf("-------------\n");
 	ft_printf("%03.3X\n", 6983);
 	printf("%03.3X\n", 6983);
-
+	printf("-------------\n");
+	ft_printf("%08.3X\n", 8375);
+	printf("%08.3X\n", 8375);
+	printf("-------------\n");
+	ft_printf("%.X\n", 0);
+	printf("%.X\n", 0);
+	printf("-------------\n");
+	ft_printf("[%5p]\n", 0);
+	printf("[%5p]\n", 0);
 	return (0);
 }

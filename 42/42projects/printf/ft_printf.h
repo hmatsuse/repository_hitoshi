@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/05 18:11:45 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/06 16:50:04 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,11 @@ typedef struct	s_flag
 	int		zero_or_space;
 	int		minus;
 	int		plus;
-	// int		bash;
-	// int		space;
 	int		width;
 	int		dot;
 	int		dot_width;
 	char	character;
 	int		printlen;
-	// int		slen;
 }				t_flag;
 
 int		check_char(char **format, va_list ap, t_flag *flag);
