@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 19:42:32 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 13:12:20 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 13:56:25 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,13 @@ void	print_s(va_list ap, t_flag *flag)
 void	print_d(va_list ap, t_flag *flag)
 {
 	char		*ap_tmp;
-	int			is_minus;
 	long long	tmp;
 
-	is_minus = 0;
 	if (flag->character == 'u')
 		tmp = va_arg(ap, unsigned int);
 	else
 		tmp = va_arg(ap, int);
-	if ((is_minus = (tmp < 0 ? 1 : 0)) == 1)
+	if ((flag->diu_is_minus = (tmp < 0 ? 1 : 0)) == 1)
 		tmp *= -1;
 	if (flag->character == 'u')
 		ap_tmp = ft_litoa(tmp);
@@ -93,7 +91,7 @@ void	print_d(va_list ap, t_flag *flag)
 		flag->sp_zr_len_dot = flag->dot_width - flag->print_len;
 	else
 		flag->sp_zr_len_dot = 0;
-	if (flag->minus == 1 && flag->sp_zr_len > 0 && is_minus == 1)
+	if (flag->minus == 1 && flag->sp_zr_len > 0 && flag->diu_is_minus == 1)
 	{
 		if (flag->dot == 1)
 		{
@@ -109,7 +107,7 @@ void	print_d(va_list ap, t_flag *flag)
 			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len - 1, flag);
 		}
 	}
-	else if (flag->minus == 1 && flag->sp_zr_len > 0 && is_minus == 0)
+	else if (flag->minus == 1 && flag->sp_zr_len > 0 && flag->diu_is_minus == 0)
 	{
 		if (flag->dot == 1)
 		{
@@ -123,7 +121,7 @@ void	print_d(va_list ap, t_flag *flag)
 			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
 		}
 	}
-	else if (flag->minus == 0 && flag->sp_zr_len > 0 && is_minus == 1)
+	else if (flag->minus == 0 && flag->sp_zr_len > 0 && flag->diu_is_minus == 1)
 	{
 		if (flag->dot == 1)
 		{
@@ -139,7 +137,7 @@ void	print_d(va_list ap, t_flag *flag)
 			ft_putnstr(ap_tmp, flag->print_len, flag);
 		}
 	}
-	else if (flag->minus == 0 && flag->sp_zr_len > 0 && is_minus == 0)
+	else if (flag->minus == 0 && flag->sp_zr_len > 0 && flag->diu_is_minus == 0)
 	{
 		if (flag->dot == 1)
 		{

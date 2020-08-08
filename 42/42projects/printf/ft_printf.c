@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 14:52:13 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 11:22:25 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 13:55:46 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	reset_flag(t_flag *flag)
 	flag->print_len = 0;
 	flag->sp_zr_len = 0;
 	flag->sp_zr_len_dot = 0;
+	flag->diu_is_minus = 0;
 }
 
 int		check_char(char **format, va_list ap, t_flag *flag)
