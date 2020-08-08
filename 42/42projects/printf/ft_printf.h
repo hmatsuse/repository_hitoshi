@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 13:28:28 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 17:57:19 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,19 @@
 # define MAX(x, y) (x > y ? x : y)
 typedef struct	s_flag
 {
-	int		zero_or_space;
-	int		minus;
-	int		plus;
-	int		width;
-	int		dot;
-	int		dot_width;
-	char	character;
-	int		printlen;
-	int		sp_zr_len;
-	int		sp_zr_len_dot;
-	int		print_len;
-	int		diu_is_minus;
+	int			zero_or_space;
+	int			minus;
+	int			plus;
+	int			width;
+	int			dot;
+	int			dot_width;
+	char		character;
+	int			printlen;
+	int			sp_zr_len;
+	int			sp_zr_len_dot;
+	int			print_len;
+	int			diu_is_minus;
+	long long	tmp;
 }				t_flag;
 
 int		check_char(char **format, va_list ap, t_flag *flag);
@@ -46,6 +47,7 @@ void	print_concierge(va_list ap, t_flag *flag);
 void	print_c(va_list ap, t_flag *flag);
 void	print_s(va_list ap, t_flag *flag);
 void	print_d(va_list ap, t_flag *flag);
+void	diu(char *ap_tmp, t_flag *flag);
 void	print_adress(va_list ap, t_flag *flag);
 void	print_sp_or_zr(char	sp_or_zr, int sp_zr_len, t_flag *flag);
 void	print_percent(t_flag *flag);

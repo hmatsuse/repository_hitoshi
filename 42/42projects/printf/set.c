@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 13:10:16 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 13:56:22 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 18:35:11 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	set_width(char **format, va_list ap, t_flag *flag)
 	int tmp_width;
 
 	tmp_width = flag->width * 0;
+	if (ft_isdigit(**format) == 0)
+		flag->width = 0;
 	while (ft_isdigit(**format))
 	{
 		tmp_width = (tmp_width * 10) + (**format - '0');

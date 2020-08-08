@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 19:42:32 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 13:56:25 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 18:36:05 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,92 +67,28 @@ void	print_s(va_list ap, t_flag *flag)
 void	print_d(va_list ap, t_flag *flag)
 {
 	char		*ap_tmp;
-	long long	tmp;
 
 	if (flag->character == 'u')
-		tmp = va_arg(ap, unsigned int);
+		flag->tmp = va_arg(ap, unsigned int);
 	else
-		tmp = va_arg(ap, int);
-	if ((flag->diu_is_minus = (tmp < 0 ? 1 : 0)) == 1)
-		tmp *= -1;
+		flag->tmp = va_arg(ap, int);
+	if ((flag->diu_is_minus = (flag->tmp < 0 ? 1 : 0)) == 1)
+		flag->tmp *= -1;
 	if (flag->character == 'u')
-		ap_tmp = ft_litoa(tmp);
+		ap_tmp = ft_litoa(flag->tmp);
 	else
-		ap_tmp = ft_itoa(tmp);
+		ap_tmp = ft_itoa(flag->tmp);
 	flag->print_len = ft_strlen(ap_tmp);
-	if (flag->dot == 1 && flag->dot_width == 0 && tmp == 0)
-	{
-		print_sp_or_zr(' ', flag->width, flag);
-		return ;
-	}
-	else
-		flag->sp_zr_len = flag->width - MAX(flag->print_len, flag->dot_width);
+	flag->sp_zr_len = flag->width - MAX(flag->print_len, flag->dot_width);
 	if (flag->dot == 1 && flag->dot_width > flag->print_len)
 		flag->sp_zr_len_dot = flag->dot_width - flag->print_len;
 	else
 		flag->sp_zr_len_dot = 0;
-	if (flag->minus == 1 && flag->sp_zr_len > 0 && flag->diu_is_minus == 1)
-	{
-		if (flag->dot == 1)
-		{
-			ft_putchar_fd_len('-', 1, flag);
-			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
-			ft_putnstr(ap_tmp, flag->print_len, flag);
-			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len - 1, flag);
-		}
-		else
-		{
-			ft_putchar_fd_len('-', 1, flag);
-			ft_putnstr(ap_tmp, flag->print_len, flag);
-			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len - 1, flag);
-		}
-	}
-	else if (flag->minus == 1 && flag->sp_zr_len > 0 && flag->diu_is_minus == 0)
-	{
-		if (flag->dot == 1)
-		{
-			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
-			ft_putnstr(ap_tmp, flag->print_len, flag);
-			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
-		}
-		else
-		{
-			ft_putnstr(ap_tmp, flag->print_len, flag);
-			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
-		}
-	}
-	else if (flag->minus == 0 && flag->sp_zr_len > 0 && flag->diu_is_minus == 1)
-	{
-		if (flag->dot == 1)
-		{
-			print_sp_or_zr(' ', flag->sp_zr_len - 1, flag);
-			ft_putchar_fd_len('-', 1, flag);
-			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
-			ft_putnstr(ap_tmp, flag->print_len, flag);
-		}
-		else
-		{
-			ft_putchar_fd_len('-', 1, flag);
-			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len - 1, flag);
-			ft_putnstr(ap_tmp, flag->print_len, flag);
-		}
-	}
-	else if (flag->minus == 0 && flag->sp_zr_len > 0 && flag->diu_is_minus == 0)
-	{
-		if (flag->dot == 1)
-		{
-			print_sp_or_zr(' ', flag->sp_zr_len, flag);
-			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
-			ft_putnstr(ap_tmp, flag->print_len, flag);
-		}
-		else
-		{
-			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
-			ft_putnstr(ap_tmp, flag->print_len, flag);
-		}
-	}
-	else
-		ft_putnstr(ap_tmp, flag->print_len, flag);
+	if (flag->diu_is_minus == 1 && flag->sp_zr_len_dot > 0)
+		flag->sp_zr_len_dot -= 1;
+	else if (flag->diu_is_minus == 1 && flag->sp_zr_len > 0)
+		flag->sp_zr_len -= 1;
+	diu(ap_tmp, flag);
 }
 
 void	print_adress(va_list ap, t_flag *flag)
@@ -175,3 +111,95 @@ void	print_adress(va_list ap, t_flag *flag)
 		adress_cul(tmp, "0123456789ABCDEF", flag); 
 	}
 }
+
+
+// void	print_d(va_list ap, t_flag *flag)
+// {
+// 	char		*ap_tmp;
+// 	long long	tmp;
+
+// 	if (flag->character == 'u')
+// 		tmp = va_arg(ap, unsigned int);
+// 	else
+// 		tmp = va_arg(ap, int);
+// 	if ((flag->diu_is_minus = (tmp < 0 ? 1 : 0)) == 1)
+// 		tmp *= -1;
+// 	if (flag->character == 'u')
+// 		ap_tmp = ft_litoa(tmp);
+// 	else
+// 		ap_tmp = ft_itoa(tmp);
+// 	flag->print_len = ft_strlen(ap_tmp);
+// 	if (flag->dot == 1 && flag->dot_width == 0 && tmp == 0)
+// 	{
+// 		print_sp_or_zr(' ', flag->width, flag);
+// 		return ;
+// 	}
+// 	else
+// 		flag->sp_zr_len = flag->width - MAX(flag->print_len, flag->dot_width);
+// 	if (flag->dot == 1 && flag->dot_width > flag->print_len)
+// 		flag->sp_zr_len_dot = flag->dot_width - flag->print_len;
+// 	else
+// 		flag->sp_zr_len_dot = 0;
+// 	if (flag->minus == 1 && flag->sp_zr_len > 0 && flag->diu_is_minus == 1)
+// 	{
+// 		if (flag->dot == 1)
+// 		{
+// 			ft_putchar_fd_len('-', 1, flag);
+// 			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
+// 			ft_putnstr(ap_tmp, flag->print_len, flag);
+// 			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len - 1, flag);
+// 		}
+// 		else
+// 		{
+// 			ft_putchar_fd_len('-', 1, flag);
+// 			ft_putnstr(ap_tmp, flag->print_len, flag);
+// 			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len - 1, flag);
+// 		}
+// 	}
+// 	else if (flag->minus == 1 && flag->sp_zr_len > 0 && flag->diu_is_minus == 0)
+// 	{
+// 		if (flag->dot == 1)
+// 		{
+// 			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
+// 			ft_putnstr(ap_tmp, flag->print_len, flag);
+// 			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
+// 		}
+// 		else
+// 		{
+// 			ft_putnstr(ap_tmp, flag->print_len, flag);
+// 			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
+// 		}
+// 	}
+// 	else if (flag->minus == 0 && flag->sp_zr_len > 0 && flag->diu_is_minus == 1)
+// 	{
+// 		if (flag->dot == 1)
+// 		{
+// 			print_sp_or_zr(' ', flag->sp_zr_len - 1, flag);
+// 			ft_putchar_fd_len('-', 1, flag);
+// 			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
+// 			ft_putnstr(ap_tmp, flag->print_len, flag);
+// 		}
+// 		else
+// 		{
+// 			ft_putchar_fd_len('-', 1, flag);
+// 			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len - 1, flag);
+// 			ft_putnstr(ap_tmp, flag->print_len, flag);
+// 		}
+// 	}
+// 	else if (flag->minus == 0 && flag->sp_zr_len > 0 && flag->diu_is_minus == 0)
+// 	{
+// 		if (flag->dot == 1)
+// 		{
+// 			print_sp_or_zr(' ', flag->sp_zr_len, flag);
+// 			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
+// 			ft_putnstr(ap_tmp, flag->print_len, flag);
+// 		}
+// 		else
+// 		{
+// 			print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
+// 			ft_putnstr(ap_tmp, flag->print_len, flag);
+// 		}
+// 	}
+// 	else
+// 		ft_putnstr(ap_tmp, flag->print_len, flag);
+// }

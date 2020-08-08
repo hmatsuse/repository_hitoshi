@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 CC = gcc
 RM = rm -f
-SRCS = ft_printf.c print.c print_concierge.c set.c utils.c adress_cul.c print_percent.c
+SRCS = ft_printf.c print.c print_concierge.c set.c utils.c adress_cul.c print_percent.c put_diu.c
 OBJS = $(SRCS:.c=.o)
 # CFLAGS = -Wall -Wextra -Werror
 
