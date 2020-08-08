@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 19:42:32 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 18:36:05 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 19:58:46 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	print_sp_or_zr(char	sp_or_zr, int sp_zr_len, t_flag *flag)
 	int i;
 
 	i = 0;
+	if (sp_zr_len < 0)
+		return ;
 	while (i++ != sp_zr_len)
 		ft_putchar_fd_len(sp_or_zr, 1, flag);
 }
@@ -84,10 +86,11 @@ void	print_d(va_list ap, t_flag *flag)
 		flag->sp_zr_len_dot = flag->dot_width - flag->print_len;
 	else
 		flag->sp_zr_len_dot = 0;
-	if (flag->diu_is_minus == 1 && flag->sp_zr_len_dot > 0)
-		flag->sp_zr_len_dot -= 1;
-	else if (flag->diu_is_minus == 1 && flag->sp_zr_len > 0)
+	if (flag->diu_is_minus == 1 && flag->sp_zr_len > 0)
 		flag->sp_zr_len -= 1;
+	if (flag->dot == 1)
+		flag->zero_or_space = ' ';
+	// printf("flag->so_ze_len_dot = %d\n", flag->sp_zr_len_dot);
 	diu(ap_tmp, flag);
 }
 
@@ -111,7 +114,6 @@ void	print_adress(va_list ap, t_flag *flag)
 		adress_cul(tmp, "0123456789ABCDEF", flag); 
 	}
 }
-
 
 // void	print_d(va_list ap, t_flag *flag)
 // {
