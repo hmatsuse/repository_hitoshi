@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 17:39:28 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/06 18:24:43 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 12:47:16 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,61 +14,54 @@
 
 void	put_adress(char *str, t_flag *flag)
 {
-	int		sp_zr_len;
-	int		sp_zr_len_dot;
-	int		print_len;
-
-	print_len = ft_strlen(str);
-	if ((sp_zr_len = flag->width - MAX(print_len, flag->dot_width)) < 0)
-		sp_zr_len = 0;
+	flag->print_len = ft_strlen(str);
+	if ((flag->sp_zr_len = flag->width - MAX(flag->print_len, flag->dot_width)) < 0)
+		flag->sp_zr_len = 0;
 	if (flag->width == -1)
-		sp_zr_len = 0;
-	if ((sp_zr_len_dot = flag->dot_width - print_len) < 0)
-		sp_zr_len_dot = 0;
+		flag->sp_zr_len = 0;
+	if ((flag->sp_zr_len_dot = flag->dot_width - flag->print_len) < 0)
+		flag->sp_zr_len_dot = 0;
 	if (flag->minus == 1)
 	{
 		if (flag->dot == 1)
-			print_sp_or_zr('0', sp_zr_len_dot, flag);
-		ft_putnstr(str, print_len, flag);
-		print_sp_or_zr(flag->zero_or_space, sp_zr_len, flag);
+			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
+		ft_putnstr(str, flag->print_len, flag);
+		print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
 	}
 	else if (flag->minus == 0)
 	{
-		print_sp_or_zr(flag->zero_or_space, sp_zr_len, flag);
+		print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
 		if (flag->dot == 1)
-			print_sp_or_zr('0', sp_zr_len_dot, flag);
-		ft_putnstr(str, print_len, flag);
+			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
+		ft_putnstr(str, flag->print_len, flag);
 	}
 }
 
 void	put_adress_p(char *str, t_flag *flag)
 {
-	int		sp_zr_len;
-	int		sp_zr_len_dot;
-	int		print_len;
-
-	print_len = ft_strlen(str) + 2;
-	if ((sp_zr_len = flag->width - MAX(print_len, flag->dot_width)) < 0)
-		sp_zr_len = 0;
+	flag->print_len = ft_strlen(str) + 2;
+	if ((flag->sp_zr_len = flag->width - MAX(flag->print_len,\
+	flag->dot_width)) < 0)
+		flag->sp_zr_len = 0;
 	if (flag->width == -1)
-		sp_zr_len = 0;
-	if ((sp_zr_len_dot = flag->dot_width - print_len) < 0)
-		sp_zr_len_dot = 0;
+		flag->sp_zr_len = 0;
+	if ((flag->sp_zr_len_dot = flag->dot_width - flag->print_len) < 0)
+		flag->sp_zr_len_dot = 0;
 	if (flag->minus == 1)
 	{
 		if (flag->dot == 1)
-			print_sp_or_zr('0', sp_zr_len_dot, flag);
+			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
 		ft_putnstr("0x", 2, flag);
-		ft_putnstr(str, print_len, flag);
-		print_sp_or_zr(flag->zero_or_space, sp_zr_len, flag);
+		ft_putnstr(str, flag->print_len, flag);
+		print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
 	}
 	else if (flag->minus == 0)
 	{
-		print_sp_or_zr(flag->zero_or_space, sp_zr_len, flag);
+		print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
 		if (flag->dot == 1)
-			print_sp_or_zr('0', sp_zr_len_dot, flag);
+			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
 		ft_putnstr("0x", 2, flag);
-		ft_putnstr(str, print_len, flag);
+		ft_putnstr(str, flag->print_len, flag);
 	}
 }
 
@@ -97,5 +90,5 @@ void	adress_cul(unsigned long tmp, char *src, t_flag *flag)
 		put_adress_p(str, flag);
 	else
 		put_adress(str, flag);
-	free(str);
+	// free(str);
 }

@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 14:52:13 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/03 22:29:09 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 11:22:25 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		reset_flag(t_flag *flag)
+void	reset_flag(t_flag *flag)
 {
 	flag->zero_or_space = ' ';
 	flag->minus = 0;
@@ -21,7 +21,9 @@ int		reset_flag(t_flag *flag)
 	flag->character = 0;
 	flag->dot = 0;
 	flag->dot_width = 0;
-	return (0);
+	flag->print_len = 0;
+	flag->sp_zr_len = 0;
+	flag->sp_zr_len_dot = 0;
 }
 
 int		check_char(char **format, va_list ap, t_flag *flag)

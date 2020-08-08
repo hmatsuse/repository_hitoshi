@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/06 17:34:24 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 12:43:00 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ typedef struct	s_flag
 	int		dot_width;
 	char	character;
 	int		printlen;
+	int		sp_zr_len;
+	int		sp_zr_len_dot;
+	int		print_len;
 }				t_flag;
 
 int		check_char(char **format, va_list ap, t_flag *flag);
