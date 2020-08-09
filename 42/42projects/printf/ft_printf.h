@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 16:35:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 17:57:19 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/09 15:00:17 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	set_dot(char **format, va_list ap, t_flag *flag);
 void	set_char(char **format, t_flag *flag);
 
 // PRINT FUNCTIONS
-void	print_concierge(va_list ap, t_flag *flag);
+int		print_concierge(va_list ap, t_flag *flag);
 void	print_c(va_list ap, t_flag *flag);
 void	print_s(va_list ap, t_flag *flag);
 void	print_d(va_list ap, t_flag *flag);

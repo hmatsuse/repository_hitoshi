@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 14:52:13 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 13:55:46 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/09 15:02:19 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int		check_char(char **format, va_list ap, t_flag *flag)
 	set_width(format, ap, flag);
 	set_dot(format, ap, flag);
 	set_char(format, flag);
-	print_concierge(ap, flag);
+	if (print_concierge(ap, flag))
+		return (1);
 	(*format)++;
 	return (0);
 }
@@ -46,7 +47,10 @@ int		check(char *format, va_list ap, t_flag *flag)
 		if (*format == '%')
 		{
 			format++;
-			check_char(&format, ap, flag);
+			if (*format == '\0')
+				break ;
+			if (check_char(&format, ap, flag))
+				return (1);
 			reset_flag(flag);
 		}
 		else

@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 17:44:18 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 15:07:51 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/09 15:01:04 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_concierge(va_list ap, t_flag *flag)
+int		print_concierge(va_list ap, t_flag *flag)
 {
 	if (flag->character == 'c')
 		print_c(ap ,flag);
@@ -32,4 +32,7 @@ void	print_concierge(va_list ap, t_flag *flag)
 		print_adress(ap, flag);
 	if (flag->character == '%')
 		print_percent(flag);
+	if (flag->character == 0)
+		return (1);
+	return (0);
 }

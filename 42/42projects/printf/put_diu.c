@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 14:09:39 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/08 19:57:06 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/08 22:10:15 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	put_diu(char *ap_tmp, t_flag *flag)
 
 void	diu(char *ap_tmp, t_flag *flag)
 {
+	if (flag->tmp == -2147483648)
+		flag->diu_is_minus = 0;
 	if (flag->dot == 1 && flag->dot_width == 0 && flag->tmp == 0)
 	{
 		print_sp_or_zr(' ', flag->width, flag);
@@ -72,9 +74,7 @@ void	diu(char *ap_tmp, t_flag *flag)
 		put_diu(ap_tmp, flag);
 	else
 	{
-		printf("%d\n", flag->sp_zr_len);
 		put_minus(flag);
 		ft_putnstr(ap_tmp, flag->print_len, flag);
 	}
-	
 }
