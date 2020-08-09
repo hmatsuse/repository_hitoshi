@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/30 19:42:32 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/09 14:20:41 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/09 19:02:27 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_sp_or_zr(char	sp_or_zr, int sp_zr_len, t_flag *flag)
+void	print_sp_or_zr(char sp_or_zr, int sp_zr_len, t_flag *flag)
 {
 	int i;
 
@@ -88,6 +88,7 @@ void	print_d(va_list ap, t_flag *flag)
 	if (flag->dot == 1)
 		flag->zero_or_space = ' ';
 	diu(ap_tmp, flag);
+	free(ap_tmp);
 }
 
 void	print_adress(va_list ap, t_flag *flag)
@@ -108,6 +109,6 @@ void	print_adress(va_list ap, t_flag *flag)
 	else if (flag->character == 'X')
 	{
 		tmp = va_arg(ap, unsigned int);
-		adress_cul(tmp, "0123456789ABCDEF", flag); 
+		adress_cul(tmp, "0123456789ABCDEF", flag);
 	}
 }

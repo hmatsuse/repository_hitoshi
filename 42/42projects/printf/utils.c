@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 14:06:54 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/03 21:05:36 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/09 17:29:51 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putnstr(char *ap_tmp, int len ,t_flag *flag)
+void	ft_putnstr(char *ap_tmp, int len, t_flag *flag)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ void	ft_putnstr(char *ap_tmp, int len ,t_flag *flag)
 	}
 }
 
-int		ft_min(int	ap_tmp, int dot_width)
+int		ft_min(int ap_tmp, int dot_width)
 {
 	if (ap_tmp > dot_width)
 		return (dot_width);
@@ -40,7 +40,7 @@ void	is_lminus(long long *n, size_t *minus)
 	}
 }
 
-char			*ft_litoa(long long n)
+char	*ft_litoa(long long n)
 {
 	char		*tmp;
 	long long	num;

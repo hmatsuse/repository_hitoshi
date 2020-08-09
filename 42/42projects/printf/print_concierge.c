@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/31 17:44:18 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/09 15:01:04 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/09 17:32:53 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		print_concierge(va_list ap, t_flag *flag)
 {
 	if (flag->character == 'c')
-		print_c(ap ,flag);
+		print_c(ap, flag);
 	if (flag->character == 's')
 		print_s(ap, flag);
 	if (flag->character == 'p')

@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 13:10:16 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/09 14:39:56 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/09 18:12:16 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void set_dot_width(char **format, t_flag *flag)
+void	set_dot_width(char **format, t_flag *flag)
 {
 	int	tmp_dot_width;
 
@@ -55,7 +55,7 @@ void	set_dot(char **format, va_list ap, t_flag *flag)
 {
 	while (**format == '.' || ft_isdigit(**format))
 	{
-		if (**format =='.')
+		if (**format == '.')
 		{
 			flag->dot = 1;
 			(*format)++;

@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 17:39:28 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/08/09 17:25:05 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/08/09 18:01:52 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,6 @@ void	put_adress(char *str, t_flag *flag)
 		ft_putnstr(str, flag->print_len, flag);
 	}
 }
-		// if ((flag->dot == 1) && !(ft_strncmp(str, "", 1) == 0 && flag->dot_width == 0))
-
-// void	put_adress(char *str, t_flag *flag)
-// {
-// 	len_set(str, flag);
-// 	if (flag->minus == 1)
-// 	{
-// 		if (flag->dot == 1)
-// 			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
-// 		ft_putnstr(str, flag->print_len, flag);
-// 		print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
-// 	}
-// 	else if (flag->minus == 0)
-// 	{
-// 		print_sp_or_zr(flag->zero_or_space, flag->sp_zr_len, flag);
-// 		if (flag->dot == 1)
-// 			print_sp_or_zr('0', flag->sp_zr_len_dot, flag);
-// 		ft_putnstr(str, flag->print_len, flag);
-// 	}
-// }
 
 void	adress_cul(unsigned long tmp, char *src, t_flag *flag)
 {
@@ -79,7 +59,7 @@ void	adress_cul(unsigned long tmp, char *src, t_flag *flag)
 	tmp1 = tmp;
 	while (tmp /= 16)
 		len++;
-	if(!(str = (char *)malloc(sizeof(char) * (len + 1))))
+	if (!(str = (char *)malloc(sizeof(char) * (len + 2))))
 		return ;
 	str[len + 1] = '\0';
 	while (len >= 0)
@@ -89,11 +69,10 @@ void	adress_cul(unsigned long tmp, char *src, t_flag *flag)
 		len--;
 	}
 	if (flag->dot == 1 && str[0] == '0')
-		str = "";
-	// if (flag->character == 'p')
+	{
+		free(str);
+		str = ft_strdup("");
+	}
 	put_adress(str, flag);
-	// else
-	// 	put_adress(str, flag);
-	// if (ft_strncmp(str, "", 1) != 0);
-	// 	free(str);
+	free(str);
 }
