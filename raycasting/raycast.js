@@ -54,15 +54,50 @@ class Player {
     update() {
         //TODO:
         //update player position based on turnDirection and walkDirection
+        // console.log(this.turnDirection);
+        this.rotationAngl += this.turnDirection * this.rotationSpeed;
+
     }
     render() {
+        noStroke();
         fill("red");
         circle(this.x, this.y, this.radius);
+        stroke("red");
+        line(
+            this.x,
+            this.y,
+            this.x + Math.cos(this.rotationAngl) * 30,
+            this.y + Math.sin(this.rotationAngl) * 30
+        );
     }
 }
 
 var grid = new Map();
 var player = new Player();
+
+function keyPressed() {
+    if (keyCode == UP_ARROW) {
+        player.walkDirection = +1;
+    }else if (keyCode == DOWN_ARROW) {
+        player.walkDirection = -1;
+    }else if (keyCode == RIGHT_ARROW) {
+        player.turnDirection = +1;
+    }else if (keyCode == LEFT_ARROW) {
+        player.turnDirection = -1;
+    }
+}
+
+function keyReleased() {
+    if (keyCode == UP_ARROW) {
+        player.walkDirection = 0;
+    }else if (keyCode == DOWN_ARROW) {
+        player.walkDirection = 0;
+    }else if (keyCode == RIGHT_ARROW) {
+        player.turnDirection = 0;
+    }else if (keyCode == LEFT_ARROW) {
+        player.turnDirection = 0;
+    }
+}
 
 function setup() {
     // TODO: initialize all objects
