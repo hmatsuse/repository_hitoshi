@@ -5,6 +5,11 @@ const MAP_NUM_COLS = 16;
 const WINDOW_WIDTH = MAP_NUM_COLS * TILE_SIZE;
 const WINDOW_HEIGHT = MAP_NUM_ROWS * TILE_SIZE;
 
+const FOV_ANGLE = 60 * (Math.PI / 180);
+
+const WALL_STRIP_WIDTH = 1;
+const NUM_RAYS = WINDOW_WIDTH / WALL_STRIP_WIDTH;
+
 class Map {
     constructor() {
         this.grid = [
@@ -26,6 +31,16 @@ class Map {
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         ]
     }
+
+    hasWallAt(x, y) {
+        if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT) {
+            return (true);
+        }
+        var mapGridIndexX = Math.floor(x / TILE_SIZE);
+        var mapGridIndexY = Math.floor(y / TILE_SIZE);
+        return (this.grid[mapGridIndexY][mapGridIndexX] != 0);
+    }
+
     render() {
         for (var i = 0; i < MAP_NUM_ROWS; i++) {
             for (var j = 0; j < MAP_NUM_COLS; j++) {
@@ -56,7 +71,17 @@ class Player {
         //update player position based on turnDirection and walkDirection
         // console.log(this.turnDirection);
         this.rotationAngl += this.turnDirection * this.rotationSpeed;
+        
+        var moveSpeed = this.walkDirection * this.moveSpeed;
 
+        var newPlayerX = this.x + Math.cos(this.rotationAngl) * moveSpeed;
+        var newPlayerY = this.y + Math.sin(this.rotationAngl) * moveSpeed;
+
+        // only set new player position if it is not colliding with the map walls
+        if (!grid.hasWallAt(newPlayerX, newPlayerY)) {
+            this.x = newPlayerX;
+            this.y = newPlayerY;
+        }
     }
     render() {
         noStroke();
@@ -72,10 +97,21 @@ class Player {
     }
 }
 
+class Ray {
+    constructor() {
+        //TODO
+    }
+    render() {
+        //TODO
+    }
+}
+
 var grid = new Map();
 var player = new Player();
+var rays = [];
 
 function keyPressed() {
+    // console.log("hit");
     if (keyCode == UP_ARROW) {
         player.walkDirection = +1;
     }else if (keyCode == DOWN_ARROW) {
@@ -88,6 +124,7 @@ function keyPressed() {
 }
 
 function keyReleased() {
+
     if (keyCode == UP_ARROW) {
         player.walkDirection = 0;
     }else if (keyCode == DOWN_ARROW) {
@@ -99,6 +136,19 @@ function keyReleased() {
     }
 }
 
+function castAllRays() {
+    var columnId = 0;
+
+    // start first ray subtracting half of the FOV
+    var rayAngle = player.rotationAngl - (FOV_ANGLE / 2);
+    rays = [];
+
+    for (var i = 0; i < NUM_RAYS; i++) {
+        var ray = new Ray(rayAngle);
+        // rays.cast();
+    }
+}
+
 function setup() {
     // TODO: initialize all objects
     createCanvas(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -107,10 +157,12 @@ function setup() {
 function update() {
     // TODO: update all game objects before we render the next frame
     player.update();
+    castAllRays();
 }
 
 function draw() {
     // TODO: render all objects frame by frame
+    // console.log("hit");
     update();
     grid.render();
     player.render();
