@@ -6,57 +6,58 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 12:24:10 by tkodai            #+#    #+#             */
-/*   Updated: 2020/11/26 18:30:30 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/11 21:23:19 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx_mms_20200219/mlx.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <math.h>
+#include "cub3d.h"
+// #include "minilibx_mms_20200219/mlx.h"
+// #include <stdio.h>
+// #include <unistd.h>
+// #include <math.h>
 
-#define KEY_W		13
-#define KEY_S		1
-#define KEY_A		0
-#define KEY_D		2
-#define KEY_LEFT	123
-#define KEY_RIGHT	124
-#define PI			3.1415926534
-#define	MOVE_RANGE	5
-#define	GRID		64
+// #define KEY_W		13
+// #define KEY_S		1
+// #define KEY_A		0
+// #define KEY_D		2
+// #define KEY_LEFT	123
+// #define KEY_RIGHT	124
+// #define PI			3.1415926534
+// #define	MOVE_RANGE	5
+// #define	GRID		64
 
 
-int	g_map[10][10] = 
-{
-	{0, 0, 0, 0, 0, 0, 0, 0},
-	{0, 1, 1, 1, 1, 1, 1, 1},
-	{0, 1, 0, 0, 0, 0, 0, 1},
-	{0, 1, 0, 0, 0, 0, 0, 1},
-	{0, 1, 0, 0, 0, 0, 0, 1},
-	{0, 1, 0, 0, 0, 0, 0, 1},
-	{0, 1, 0, 0, 0, 0, 0, 1},
-	{0, 1, 1, 1, 1, 1, 1, 1}
-};
+// int	g_map[10][10] = 
+// {
+// 	{0, 0, 0, 0, 0, 0, 0, 0},
+// 	{0, 1, 1, 1, 1, 1, 1, 1},
+// 	{0, 1, 0, 0, 0, 0, 0, 1},
+// 	{0, 1, 0, 0, 0, 0, 0, 1},
+// 	{0, 1, 0, 0, 0, 0, 0, 1},
+// 	{0, 1, 0, 0, 0, 0, 0, 1},
+// 	{0, 1, 0, 0, 0, 0, 0, 1},
+// 	{0, 1, 1, 1, 1, 1, 1, 1}
+// };
 
-typedef struct 		s_game
-{
-	void	*mlx_ptr;	
-	void	*win_ptr;
-	void	*img_ptr;
-	void	*img_addr;
+// typedef struct 		s_game
+// {
+// 	void	*mlx_ptr;	
+// 	void	*win_ptr;
+// 	void	*img_ptr;
+// 	void	*img_addr;
 
-	int		img_bit_per_pix;
-	int		img_endian;
-	int		img_line_len;
+// 	int		img_bit_per_pix;
+// 	int		img_endian;
+// 	int		img_line_len;
 
-	//player x
-	double	px;
-	//player y
-	double	py;
-	//player angle
-	double	pa;
+// 	//player x
+// 	double	px;
+// 	//player y
+// 	double	py;
+// 	//player angle
+// 	double	pa;
 
-}					t_game;
+// }					t_game;
 
 void	my_mlx_pixel_put(t_game *g, int x, int y, int color)
 {
@@ -65,8 +66,6 @@ void	my_mlx_pixel_put(t_game *g, int x, int y, int color)
 	dst = g->img_addr + (y * g->img_line_len + x * (g->img_bit_per_pix / 8));
 	*(unsigned int*)dst = color;
 }
-
-
 
 //  0  1  2
 //0[R][R][G] 1[R][B][B] 2[R][B][B]
@@ -80,6 +79,8 @@ void	my_mlx_pixel_put(t_game *g, int x, int y, int color)
 //
 //0xFF0000
 //img_addr = 00FF0000 00FF0000
+// 
+
 void	put_player(t_game *g)
 {
 	int 	range = 1;
@@ -90,6 +91,8 @@ void	put_player(t_game *g)
 	tmp_px = g->px;
 	tmp_py = g->py;
 	double angle = g->pa - (PI / 6);
+	// tmp_py = g->py/64*64;
+	// tmp_px = g->px + (g->py - tmp_py)/tan(angle);
 	while (angle <= g->pa + (PI / 6))
 	{
 		while (g_map[(int)tmp_py / GRID][(int)tmp_px / GRID] == 0)
@@ -97,12 +100,14 @@ void	put_player(t_game *g)
 			range++;
 			tmp_px = cos(angle) * range + g->px;
 			tmp_py = sin(angle) * range + g->py;
+			// tmp_px = cos(angle) * range + g->px;
+			// tmp_py = sin(angle) * range + g->py;
 			my_mlx_pixel_put(g, tmp_px, tmp_py, 0x0000FF);
 		}
 		range = 1;
 		tmp_px = g->px;
 		tmp_py = g->py;
-		angle += (PI / 32);
+		angle += (PI / 1000);
 	}
 
 	range = 1;
@@ -136,14 +141,12 @@ void	put_player(t_game *g)
 	{
 		if (g_map[(int)tmp_py / GRID][(int)tmp_px / GRID] == 1)
 			break ;
-
 		tmp_px = cos(g->pa - (PI / 6)) * range + g->px;
 		tmp_py = sin(g->pa - (PI / 6)) * range + g->py;
 		my_mlx_pixel_put(g, tmp_px, tmp_py, 0xFF0000);
 	}
-
 	my_mlx_pixel_put(g, g->px, g->py, 0xFF0000);
-//RGB	
+//RGB
 }
 
 void	draw_back_ground(t_game *g)
@@ -193,8 +196,6 @@ void	cub3d_1(t_game *g)
 	put_player(g);
 //	dda_1(g);
 	mlx_put_image_to_window(g->mlx_ptr, g->win_ptr, g->img_ptr, 0, 0);
-	
-	
 }
 
 void	ft_move(t_game *g, int move_dir)
@@ -235,7 +236,6 @@ int		ft_puttmp(int key, t_game *g)
 {
 	printf("key = %d\n", key);
 	write (1, "put[x]",6 );
-	exit(0);
 	return (0);
 }
 
@@ -257,8 +257,8 @@ void	ft_hooks(t_game *g)
 void	init_game(t_game *g)
 {
 	g->mlx_ptr = mlx_init();
-	g->win_ptr = mlx_new_window(g->mlx_ptr, 500, 500, "cub3d");
-	g->img_ptr = mlx_new_image(g->mlx_ptr, 500, 500);
+	g->win_ptr = mlx_new_window(g->mlx_ptr, 700, 700, "cub3d");
+	g->img_ptr = mlx_new_image(g->mlx_ptr, 700, 700);
 	g->img_addr = mlx_get_data_addr(g->img_ptr, &g->img_bit_per_pix, &g->img_line_len, &g->img_endian);
 
 	g->px = 250;
@@ -281,3 +281,6 @@ int		main()
 	init_game(&g);
 	return (0);
 }
+
+// Playerの現在地
+// 
