@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:22:12 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 02:33:56 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/25 06:19:57 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:40:22 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	check_map(t_player *p)
 	int	map_valid;
 
 	map_valid = 1;
-	check_with_dfs(p, p->map.p_start_pos_y, p->map.p_start_pos_x, &map_valid);
+	check_with_dfs(p, p->map.p_pos_st_y, p->map.p_pos_st_x, &map_valid);
 	if (0 == map_valid)
 		error_quit(MAP_ERR);
 }

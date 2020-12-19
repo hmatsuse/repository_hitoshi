@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:23:50 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 02:33:56 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/25 11:43:45 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:44:24 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	add_zero(t_map *map_info, size_t len_line, int *len)
 	}
 }
 
-void	input_sprite(t_player *player, char *line, int *len)
+void	input_sp(t_player *player, char *line, int *len)
 {
 	int		x;
 

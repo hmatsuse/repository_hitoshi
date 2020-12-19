@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   draw_background.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knagashi <knagashi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/15 23:34:33 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/17 02:07:58 by keiichiro        ###   ########.fr       */
+/*   Created: 2020/11/23 09:41:06 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:38:21 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 #include "../includes/get_next_line.h"
 
-void	draw_ceiling(t_player *p)
+void	d_clg(t_player *p)
 {
 	int		len;
 	int		width;
@@ -28,7 +28,7 @@ void	draw_ceiling(t_player *p)
 	}
 }
 
-void	draw_floor(t_player *p)
+void	d_flr(t_player *p)
 {
 	int		len;
 	int		width;
@@ -43,8 +43,8 @@ void	draw_floor(t_player *p)
 	}
 }
 
-void	draw_background(t_player *p)
+void	d_background(t_player *p)
 {
-	draw_ceiling(p);
-	draw_floor(p);
+	d_clg(p);
+	d_flr(p);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:23:41 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 02:36:48 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/21 10:43:06 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:43:19 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ void	open_map(t_map *map_info, t_player *p)
 	len = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
-		divide_line(map_info, line, &len, p);
+		read_line(map_info, line, &len, p);
 		free(line);
 	}
-	divide_line(map_info, line, &len, p);
+	read_line(map_info, line, &len, p);
 	map_info->world_map[len] = NULL;
 	free(line);
 	close(fd);
@@ -75,7 +75,7 @@ int		get_map_data(t_map *map_info, t_player *p)
 	check_file_name(map_info->name);
 	get_map_len_width_sp(map_info);
 	map_malloc(map_info);
-	sprite_init(map_info, p);
+	init_sp(map_info, p);
 	open_map(map_info, p);
 	check_info(&p->map);
 	ft_strdup_map(map_info);

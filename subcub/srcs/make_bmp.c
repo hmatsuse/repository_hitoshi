@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:21:53 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 02:31:10 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/12/04 19:40:04 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:47:37 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	make_bmp(t_player p)
 		, &p.line_length, &p.endian);
 	get_p_pos(&p);
 	check_map(&p);
-	draw_background(&p);
-	draw_world(&p);
+	d_background(&p);
+	d_wld(&p);
 	save_bmp(&p);
 }

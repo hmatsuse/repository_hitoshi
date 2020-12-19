@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search_h_axis_util.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knagashi <knagashi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/17 01:17:03 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/17 02:09:09 by keiichiro        ###   ########.fr       */
+/*   Created: 2020/12/01 14:42:14 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:48:44 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

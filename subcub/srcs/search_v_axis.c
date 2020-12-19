@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   search_v_axis.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: knagashi <knagashi@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:23:11 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/17 22:21:28 by knagashi         ###   ########.fr       */
+/*   Created: 2020/12/01 09:31:32 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:37:50 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int			founds_v_point(t_player *p, double next_x, double next_y)
 	return (FALSE);
 }
 
-void		search_v_axis(t_player *p, double fixed_ray_angle)
+void		find_v_axis(t_player *p, double fixed_ray_angle)
 {
 	int		x;
 	int		y;

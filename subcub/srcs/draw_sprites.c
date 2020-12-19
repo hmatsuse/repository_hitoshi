@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:25:42 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 03:23:47 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/22 11:39:27 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:33:51 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	check_sp_angle(t_player *p, double p_start_angle, int index)
 		p->sp_array[index].angle -= PI * 2;
 }
 
-void	draw_sprites(t_player *p, int *len_list, int index)
+void	d_sp(t_player *p, int *len_list, int index)
 {
 	int		x;
 	double	sp_angle;
@@ -72,7 +72,7 @@ void	draw_sprites(t_player *p, int *len_list, int index)
 	while (index < p->map.sp_num)
 	{
 		check_sp_angle(p, p_start_angle, index);
-		sp_data_init(p, &sp_angle, p_start_angle, index);
+		init_sp_data(p, &sp_angle, p_start_angle, index);
 		x = p->sp_array[index].st_x;
 		draw_sprite1(p, index, len_list, x);
 		index++;

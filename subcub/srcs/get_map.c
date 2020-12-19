@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:24:41 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 03:32:12 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/24 09:51:38 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:45:12 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	input_dir(t_map *map_info, char *line, int *len, int x)
 {
 	char	*tmp;
 
-	if (TRUE == map_info->found_start_pos)
+	if (TRUE == map_info->found_st_pos)
 		error_quit(MAP_ERR);
 	if (!(tmp = ft_strdup(&line[x])))
 		error_quit(MLC_ERR);
 	map_info->world_map[*len][x] = *tmp;
-	map_info->found_start_pos = TRUE;
-	map_info->p_start_pos_x = x;
-	map_info->p_start_pos_y = *len;
+	map_info->found_st_pos = TRUE;
+	map_info->p_pos_st_x = x;
+	map_info->p_pos_st_y = *len;
 	free(tmp);
 }
 
@@ -47,5 +47,5 @@ void	get_map(char *line, int *len, t_player *player, size_t len_line)
 		error_quit(MLC_ERR);
 	input_map(&player->map, line, len_line, len);
 	add_zero(&player->map, len_line, len);
-	input_sprite(player, line, len);
+	input_sp(player, line, len);
 }

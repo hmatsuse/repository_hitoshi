@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:25:17 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 02:38:47 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/18 18:37:41 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:48:08 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 void	spin_right(t_player *p)
 {
-	draw_background(p);
+	d_background(p);
 	if (p->angle + TURN_SPEED > 2 * PI)
 		p->angle = (p->angle + TURN_SPEED) - (2 * PI);
 	else
 		p->angle += TURN_SPEED;
-	draw_world(p);
+	d_wld(p);
 	mlx_put_image_to_window(p->mlx_ptr, p->win_ptr, p->img, 0, 0);
 }
 
 void	spin_left(t_player *p)
 {
-	draw_background(p);
+	d_background(p);
 	if (p->angle - TURN_SPEED < 0)
 		p->angle = (p->angle - TURN_SPEED) + (2 * PI);
 	else
 		p->angle -= TURN_SPEED;
-	draw_world(p);
+	d_wld(p);
 	mlx_put_image_to_window(p->mlx_ptr, p->win_ptr, p->img, 0, 0);
 }
 
@@ -66,10 +66,10 @@ void	clear_and_move(t_player *p, double move_x, double move_y)
 		;
 	else if (can_move(p, move_x, move_y))
 	{
-		draw_background(p);
+		d_background(p);
 		p->cur_x = move_x;
 		p->cur_y = move_y;
-		draw_world(p);
+		d_wld(p);
 		mlx_put_image_to_window(p->mlx_ptr, \
 			p->win_ptr, p->img, 0, 0);
 	}

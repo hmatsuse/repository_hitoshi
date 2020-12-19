@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 14:11:52 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 03:32:12 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 04:25:34 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,22 @@
 # define CUB3D_H
 
 # include "mlx.h"
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
+# include "get_next_line.h"
 # include <math.h>
 # include <float.h>
 # include <limits.h>
-# include "get_next_line.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 # define PI 3.14159265359
 # define TRUE 1
 # define FALSE 0
 # define SAVE "--save"
 # define CUB ".cub"
+# define BLOCK_LEN 64
+# define BLOCK_WIDTH 64
+# define MAX_RANGE 1000000
 # define K_ESC 53
 # define K_A 0
 # define K_S 1
@@ -41,13 +44,10 @@
 # define MAP_ERR 5
 # define ARG_ERR 6
 # define WIN_ERR 7
-# define BLOCK_LEN 64
-# define BLOCK_WIDTH 64
 # define TEXTURE_LEN 64
-# define MAX_RANGE 1000000
-# define MOVE_RANGE 10
+# define MOVE_RANGE 5
 # define VIEW_ANGLE 1.047197
-# define TURN_SPEED 0.261799387799149
+# define TURN_SPEED 0.1
 
 typedef struct	s_txt
 {
@@ -68,15 +68,15 @@ typedef struct	s_map
 	char		**check_map;
 	int			map_len;
 	int			map_width;
-	int			start_wall_x;
-	int			start_wall_y;
+	int			wall_st_x;
+	int			wall_st_y;
 	int			win_x;
 	int			win_y;
 	int			floor_color;
 	int			ceilling_color;
 	int			max_win_x;
 	int			max_win_y;
-	int			found_start_pos;
+	int			found_st_pos;
 	int			comma;
 	int			sp_num;
 	int			sp_index;
@@ -89,15 +89,15 @@ typedef struct	s_map
 	int			ok_s;
 	int			ok_f;
 	int			ok_c;
-	int			p_start_pos_x;
-	int			p_start_pos_y;
+	int			p_pos_st_x;
+	int			p_pos_st_y;
 	int			color;
 	int			red;
 	int			blue;
 	int			green;
 	double		height;
 	double		prj_slice_height;
-	double		start_wall_position;
+	double		wall_st_pos;
 	double		len_to_wall;
 	double		fish_len_to_wall;
 }				t_map;
@@ -108,7 +108,7 @@ typedef struct	s_sp
 	int			map_y;
 	int			st_x;
 	int			st_y;
-	int			found_start_pos;
+	int			found_st_pos;
 	int			color;
 	double		hei_x;
 	double		hei_y;
@@ -134,23 +134,23 @@ typedef struct	s_player
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
-	double		cur_x;
-	double		cur_y;
 	double		spin_x;
 	double		spin_y;
+	double		cur_x;
+	double		cur_y;
 	int			ready_to_go;
 	double		h_axis_x;
 	double		h_axis_y;
 	double		v_axis_x;
 	double		v_axis_y;
+	int			ray_up;
+	int			ray_down;
+	int			ray_right;
+	int			ray_left;
 	double		h_wall_x;
 	double		h_wall_y;
 	double		v_wall_x;
 	double		v_wall_y;
-	int			ray_up;
-	int			ray_down;
-	int			ray_left;
-	int			ray_right;
 	t_sp		*sp_array;
 	t_map		map;
 	t_txt		info_no;
@@ -166,68 +166,67 @@ typedef struct	s_player
 	int			flg_hit_v;
 }				t_player;
 
-int				ft_strcmp(char *s1, char *s2);
-void			ft_putstr_fd(char *s, int fd);
 int				get_map_data(t_map *map_info, t_player *p);
+void			ft_putstr_fd(char *s, int fd);
 void			get_p_pos(t_player *p);
-void			draw_world(t_player *p);
+int				ft_strcmp(char *s1, char *s2);
 int				press_key(int key, t_player *p);
 void			my_mlx_pixel_put(t_player *data, int x, int y, int color);
-void			clear_map(t_player *p);
-void			draw_background(t_player *p);
 void			clear_player(t_player *p, double cur_x, double cur_y);
-void			draw_floor(t_player *p);
-void			draw_ceiling(t_player *p);
-void			get_turn_direction(t_player *p);
 void			ray_direction(t_player *p);
-void			search_h_axis(t_player *p, double fixed_ray_angle);
-void			search_v_axis(t_player *p, double fixed_ray_angle);
+void			find_v_axis(t_player *p, double fixed_ray_angle);
+void			find_h_axis(t_player *p, double fixed_ray_angle);
+void			clear_map(t_player *p);
+void			d_background(t_player *p);
+void			d_clg(t_player *p);
+void			d_wld(t_player *p);
+void			d_flr(t_player *p);
+void			get_turn_direction(t_player *p);
 void			compare_v_and_h(t_player *p);
-double			fix_angle(double angle);
-void			fix_ray_angle(t_player *p);
 void			check_irregular(t_player *p, int *x, int *y, int *flag);
-void			error_quit(int errnum);
-char			*ft_strchar(char *s, char c);
-double			modify_angle(double angle);
 void			check_map(t_player *p);
 int				save_bmp(t_player *p);
+void			error_quit(int errnum);
+char			*ft_strchar(char *s, char c);
+double			fix_angle(double angle);
 void			set_const_value(t_player *p, double fixed_ray_angle, char c);
-void			get_map_len_width_sp(t_map *map_info);
-int				is_map_data(char *line, size_t line_len);
 int				is_map(char *line);
-void			get_img(t_player *p, char dir, char *line);
+void			get_map_len_width_sp(t_map *map_info);
+void			fix_ray_angle(t_player *p);
+int				is_map_data(char *line, size_t line_len);
 void			skip_space(char *line, int *i);
+void			get_txt(t_player *p, char dir, char *line);
 void			get_background_color(t_map *map_info, char dir, char *line);
-void			get_win_size(t_map *map_info, char *line);
+double			modify_angle(double angle);
 void			get_map(char *line, int *len, t_player *p, size_t len_line);
 void			check_info(t_map *map_info);
-void			input_sprite(t_player *p, char *line, int *len);
-void			sprite_init(t_map *map_info, t_player *p);
-void			player_init(t_player *p);
-void			map_init(t_map *map_info);
-int				ft_close_botton(int key, t_player *p);
-void			sp_data_init(t_player *p, double *sp_angle
+void			input_sp(t_player *p, char *line, int *len);
+void			get_win_size(t_map *map_info, char *line);
+int				press_close_botton(int key, t_player *p);
+void			d_sp(t_player *p, int *len_list, int index);
+void			sort_sp(t_player *p, t_sp *sp_array);
+void			init_map(t_map *map_info);
+void			init_sp(t_map *map_info, t_player *p);
+void			init_player(t_player *p);
+void			init_txt(t_player *player, t_txt *texture);
+void			init_sp_data(t_player *p, double *sp_angle
 					, double p_start_angle, int index);
-void			draw_sprites(t_player *p, int *len_list, int index);
-void			sort_sprite(t_player *p, t_sp *sp_array);
-void			get_len_to_sprite(t_player *p, double cur_x, double cur_y);
 void			make_bmp(t_player p);
-void			draw_background(t_player *p);
 void			get_len_to_wall(t_player *p, double cur_x, double cur_y);
 void			put_wall_line(t_player *p, int map_block_x, t_map map);
-void			img_init(t_player *player, t_txt *texture);
-void			divide_line(t_map *map_info, char *line, int *len, t_player *p);
+void			read_line(t_map *map_info, char *line, int *len, t_player *p);
+void			get_len_to_sp(t_player *p, double cur_x, double cur_y);
+void			add_zero(t_map *map_info, size_t len_line, int *len);
 void			input_map(t_map *map_info, char *line, size_t len_line
 					, int *len);
-void			add_zero(t_map *map_info, size_t len_line, int *len);
-void			input_dir(t_map *map_info, char *line, int *len, int x);
-void			next_h_point(t_player *p, double *next_x, double *next_y);
 int				founds_h_point(t_player *p, double next_x, double next_y);
-void			find_wall_h_point(t_player *p);
-void			set_h_wall(t_player *p, double x, double y);
-void			set_v_wall(t_player *p, double x, double y);
-void			first_wall_v_point(t_player *p);
-int				founds_v_point(t_player *p, double next_x, double next_y);
+void			input_dir(t_map *map_info, char *line, int *len, int x);
 void			next_v_point(t_player *p, double *next_x, double *next_y);
+void			set_h_wall(t_player *p, double x, double y);
+void			next_h_point(t_player *p, double *next_x, double *next_y);
+void			find_wall_h_point(t_player *p);
+void			set_v_wall(t_player *p, double x, double y);
+int				founds_v_point(t_player *p, double next_x, double next_y);
+void			first_wall_v_point(t_player *p);
 
 #endif

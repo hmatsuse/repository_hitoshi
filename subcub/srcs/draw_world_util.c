@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:22:53 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 03:23:34 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/27 17:15:26 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:41:51 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	get_len_to_wall(t_player *p, double cur_x, double cur_y)
 	double	fixed_ray_angle;
 
 	fixed_ray_angle = fix_angle(p->ray_angle);
-	search_h_axis(p, fixed_ray_angle);
-	search_v_axis(p, fixed_ray_angle);
+	find_h_axis(p, fixed_ray_angle);
+	find_v_axis(p, fixed_ray_angle);
 	compare_v_and_h(p);
-	p->map.start_wall_x = cur_x + (p->map.len_to_wall * cos(p->ray_angle));
-	p->map.start_wall_y = cur_y + (p->map.len_to_wall * sin(p->ray_angle));
+	p->map.wall_st_x = cur_x + (p->map.len_to_wall * cos(p->ray_angle));
+	p->map.wall_st_y = cur_y + (p->map.len_to_wall * sin(p->ray_angle));
 	p->map.fish_len_to_wall = cos(p->angle - p->ray_angle) * p->map.len_to_wall;
 }
 
@@ -76,17 +76,17 @@ void	put_wall_line(t_player *p, int map_block_x, t_map map)
 
 	map.prj_slice_height = (((double)p->map.win_x) * 64)
 		/ p->map.fish_len_to_wall;
-	map.start_wall_position = ((double)(p->map.win_y / 2))
+	map.wall_st_pos = ((double)(p->map.win_y / 2))
 		- (map.prj_slice_height / 2);
-	map.height = map.start_wall_position;
+	map.height = map.wall_st_pos;
 	if (p->flg_hit_v && (p->ray_right || p->ray_left))
-		x = p->map.start_wall_y % TEXTURE_LEN;
+		x = p->map.wall_st_y % TEXTURE_LEN;
 	else
-		x = p->map.start_wall_x % TEXTURE_LEN;
-	while (map.height <= map.start_wall_position
+		x = p->map.wall_st_x % TEXTURE_LEN;
+	while (map.height <= map.wall_st_pos
 			+ map.prj_slice_height)
 	{
-		y = TEXTURE_LEN * ((map.height - map.start_wall_position)
+		y = TEXTURE_LEN * ((map.height - map.wall_st_pos)
 			/ map.prj_slice_height);
 		if (map.height >= 0 && map.height < p->map.win_y)
 		{

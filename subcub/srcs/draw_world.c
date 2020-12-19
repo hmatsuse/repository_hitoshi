@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:25:51 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 03:29:40 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/22 15:24:12 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:31:02 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	draw_p_view(t_player *p, double cur_x, double cur_y)
 
 	x = 0;
 	angle = -1 * (p->view_angle / 2);
-	get_len_to_sprite(p, cur_x, cur_y);
-	sort_sprite(p, p->sp_array);
+	get_len_to_sp(p, cur_x, cur_y);
+	sort_sp(p, p->sp_array);
 	while (x <= p->map.win_x)
 	{
 		p->ray_angle = p->angle + angle;
@@ -51,10 +51,10 @@ void	draw_p_view(t_player *p, double cur_x, double cur_y)
 		x++;
 	}
 	p->map.len_list[x] = 0;
-	draw_sprites(p, p->map.len_list, 0);
+	d_sp(p, p->map.len_list, 0);
 }
 
-void	draw_world(t_player *p)
+void	d_wld(t_player *p)
 {
 	get_turn_direction(p);
 	draw_p_view(p, p->cur_x, p->cur_y);

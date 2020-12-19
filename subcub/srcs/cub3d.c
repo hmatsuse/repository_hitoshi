@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:16:04 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 02:37:53 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/21 09:40:57 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:41:17 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	cub3d(t_player p)
 		, &p.line_length, &p.endian);
 	get_p_pos(&p);
 	check_map(&p);
-	draw_background(&p);
-	draw_world(&p);
+	d_background(&p);
+	d_wld(&p);
 	mlx_put_image_to_window(p.mlx_ptr, p.win_ptr, p.img, 0, 0);
 	mlx_hook(p.win_ptr, 2, 0, press_key, &p);
-	mlx_hook(p.win_ptr, 17, 0, ft_close_botton, &p);
+	mlx_hook(p.win_ptr, 17, 0, press_close_botton, &p);
 	mlx_loop(p.mlx_ptr);
 }
 
@@ -43,8 +43,8 @@ int		main(int argc, char *argv[])
 	if (argc == 2 || (argc == 3 && ft_strcmp(argv[2], SAVE)))
 	{
 		p.map.name = argv[1];
-		player_init(&p);
-		map_init(&p.map);
+		init_player(&p);
+		init_map(&p.map);
 		get_map_data(&p.map, &p);
 		if (!(p.map.len_list = malloc(sizeof(int) * (p.map.win_x + 1))))
 			error_quit(MLC_ERR);

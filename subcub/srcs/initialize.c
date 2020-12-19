@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:24:49 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 03:32:12 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/22 09:36:17 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:46:30 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	map_init(t_map *map_info)
+void	init_map(t_map *map_info)
 {
 	map_info->world_map = NULL;
 	map_info->ok_r = FALSE;
@@ -25,7 +25,7 @@ void	map_init(t_map *map_info)
 	map_info->ok_c = FALSE;
 }
 
-void	player_init(t_player *p)
+void	init_player(t_player *p)
 {
 	p->mlx_ptr = mlx_init();
 	p->angle = PI / 2;
@@ -36,13 +36,13 @@ void	player_init(t_player *p)
 	p->flg_hit_h = FALSE;
 	p->flg_hit_v = FALSE;
 	p->map.map_width = 0;
-	p->map.found_start_pos = FALSE;
+	p->map.found_st_pos = FALSE;
 	p->ready_to_go = FALSE;
 	p->view_angle = VIEW_ANGLE;
 	mlx_get_screen_size(p->mlx_ptr, &p->map.max_win_x, &p->map.max_win_y);
 }
 
-void	sp_data_init(t_player *p, double *sp_angle,
+void	init_sp_data(t_player *p, double *sp_angle,
 						double p_start_angle, int index)
 {
 	*sp_angle = p->sp_array[index].angle - p_start_angle;
@@ -61,7 +61,7 @@ void	sp_data_init(t_player *p, double *sp_angle,
 		((double)(p->map.win_y / 2)) - (p->sp_array[index].hei_y / 2);
 }
 
-void	img_init(t_player *player, t_txt *texture)
+void	init_txt(t_player *player, t_txt *texture)
 {
 	texture->data = \
 		mlx_xpm_file_to_image(player->mlx_ptr, \
@@ -74,7 +74,7 @@ void	img_init(t_player *player, t_txt *texture)
 											&texture->length, &texture->endian);
 }
 
-void	sprite_init(t_map *map_info, t_player *player)
+void	init_sp(t_map *map_info, t_player *player)
 {
 	t_sp	new;
 
@@ -88,7 +88,7 @@ void	sprite_init(t_map *map_info, t_player *player)
 		new.len_to_sp = 1;
 		new.st_x = 0;
 		new.st_y = 0;
-		new.found_start_pos = 0;
+		new.found_st_pos = 0;
 		player->sp_array[map_info->sp_index] = new;
 		map_info->sp_index++;
 	}

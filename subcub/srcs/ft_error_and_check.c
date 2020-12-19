@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/16 22:29:30 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 02:35:45 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/20 09:46:02 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:54:21 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	error_quit(int num)
 {
 	if (TEX_ERR == num)
-		perror("ERROR\ntexture error");
-	else if (MLC_ERR == num)
-		perror("ERROR\nmalloc error");
-	else if (OPEN_ERR == num)
-		perror("ERROR\nopen error");
-	else if (COLOR_ERR == num)
-		ft_putstr_fd("ERROR\ncolor error\n", 2);
-	else if (MAP_ERR == num)
-		ft_putstr_fd("ERROR\nmap data error\n", 2);
+		perror("TEXTURE ERROR");
 	else if (ARG_ERR == num)
-		ft_putstr_fd("ERROR\narguments error\n", 2);
+		perror("MALLOC ERROR");
+	else if (OPEN_ERR == num)
+		perror("OPEN ERROR");
 	else if (WIN_ERR == num)
-		ft_putstr_fd("ERROR\nwindow size error\n", 2);
+		ft_putstr_fd("ARGUMENTS ERROR\n", 2);
+	else if (MAP_ERR == num)
+		ft_putstr_fd("MAP ERROR\n", 2);
+	else if (COLOR_ERR == num)
+		ft_putstr_fd("COLOR ERROR\n", 2);
+	else if (MLC_ERR == num)
+		ft_putstr_fd("WINDOW ERROR\n", 2);
 	exit(1);
 }
 
@@ -43,7 +43,7 @@ void	check_irregular(t_player *player, int *x, int *y, int *flag)
 		(*flag)++;
 }
 
-int		ft_close_botton(int key, t_player *p)
+int		press_close_botton(int key, t_player *p)
 {
 	p->ready_to_go = key;
 	exit(0);

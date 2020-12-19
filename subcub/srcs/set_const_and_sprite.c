@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/13 14:25:59 by knagashi          #+#    #+#             */
-/*   Updated: 2020/12/20 03:19:40 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/12/05 19:50:02 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 04:49:22 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	get_len_to_sprite(t_player *p, double cur_x, double cur_y)
+void	get_len_to_sp(t_player *p, double cur_x, double cur_y)
 {
 	double	len_x;
 	double	len_y;
@@ -32,7 +32,7 @@ void	get_len_to_sprite(t_player *p, double cur_x, double cur_y)
 	}
 }
 
-void	sort_sprite(t_player *p, t_sp *sp_array)
+void	sort_sp(t_player *p, t_sp *sp_array)
 {
 	t_sp		tmp;
 	int			num;
