@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 14:11:52 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 20:26:21 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 23:34:45 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ void			ck_map(t_player *p);
 int				save_bmp(t_player *p);
 void			error_quit(int errnum);
 double			fix_angle(double angle);
-void			set_const_value(t_player *p, double fixed_ray_angle, char c);
+void			set_value_v_h(t_player *p, double fixed_ray_angle, char c);
 int				is_map(char *line);
 int				is_map_data(char *line, size_t line_len);
 void			fix_ray_angle(t_player *p);

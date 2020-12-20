@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_const_and_sprite.c                             :+:      :+:    :+:   */
+/*   set_val_sprite.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:50:02 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 19:53:28 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 23:42:57 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,42 +54,4 @@ void	sort_sp(t_player *p, t_sp *sp_array)
 		}
 		num++;
 	}
-}
-
-void	set_const_value_h(t_player *p, double fixed_ray_angle)
-{
-	double tangent;
-
-	if (p->ray_up)
-		p->h_const_y = -BLOCK_LEN;
-	else
-		p->h_const_y = BLOCK_LEN;
-	tangent = tan((PI / 2) - fixed_ray_angle);
-	if (p->ray_right)
-		p->h_const_x = BLOCK_LEN * tangent;
-	else
-		p->h_const_x = -BLOCK_LEN * tangent;
-}
-
-void	set_const_value_v(t_player *p, double fixed_ray_angle)
-{
-	double tangent;
-
-	if (p->ray_right)
-		p->v_const_x = BLOCK_LEN;
-	else
-		p->v_const_x = -BLOCK_LEN;
-	tangent = tan((PI / 2) - fixed_ray_angle);
-	if (p->ray_up)
-		p->v_const_y = -BLOCK_LEN / tangent;
-	else
-		p->v_const_y = BLOCK_LEN / tangent;
-}
-
-void	set_const_value(t_player *p, double fixed_ray_angle, char c)
-{
-	if ('v' == c)
-		set_const_value_v(p, fixed_ray_angle);
-	else
-		set_const_value_h(p, fixed_ray_angle);
 }

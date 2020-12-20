@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 05:19:18 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 15:36:13 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 23:34:45 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ void		find_h_cross(t_player *p, double fixed_ray_angle)
 		set_h_wall(p, p->h_cross_x, p->h_cross_y);
 		return ;
 	}
-	set_const_value(p, fixed_ray_angle, 'h');
+	set_value_v_h(p, fixed_ray_angle, 'h');
 	find_wall_h_point(p);
 }
