@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map_len_width_sp.c                             :+:      :+:    :+:   */
+/*   g_map_len_width_sp.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 07:40:25 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:43:38 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:28:45 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	cnt_sp(t_map *map_info, char *line)
 	}
 }
 
-void	get_map_len_width_sp(t_map *map_info)
+void	g_map_len_width_sp(t_map *map_info)
 {
 	int		fd;
 	char	*line;

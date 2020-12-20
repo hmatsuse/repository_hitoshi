@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error_and_check.c                               :+:      :+:    :+:   */
+/*   err_ck.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/20 09:46:02 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:54:21 by hmatsuse         ###   ########.fr       */
+/*   Created: 2020/11/21 19:42:30 by hmatsuse          #+#    #+#             */
+/*   Updated: 2020/12/20 14:52:29 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	error_quit(int num)
 	exit(1);
 }
 
-void	check_irregular(t_player *player, int *x, int *y, int *flag)
+void	ck_irregular(t_player *player, int *x, int *y, int *flag)
 {
 	if (*x > player->map.map_width)
 		(*flag)++;

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_world.c                                       :+:      :+:    :+:   */
+/*   d_world.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 15:24:12 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:31:02 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:51:30 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	get_turn_direction(t_player *player)
+void	g_turn_dir(t_player *player)
 {
 	player->dir_up = FALSE;
 	player->dir_down = FALSE;
@@ -30,21 +30,21 @@ void	get_turn_direction(t_player *player)
 		player->dir_left = TRUE;
 }
 
-void	draw_p_view(t_player *p, double cur_x, double cur_y)
+void	d_p_view(t_player *p, double cur_x, double cur_y)
 {
 	double	angle;
 	int		x;
 
 	x = 0;
 	angle = -1 * (p->view_angle / 2);
-	get_len_to_sp(p, cur_x, cur_y);
+	g_len_to_sp(p, cur_x, cur_y);
 	sort_sp(p, p->sp_array);
 	while (x <= p->map.win_x)
 	{
 		p->ray_angle = p->angle + angle;
 		fix_ray_angle(p);
-		ray_direction(p);
-		get_len_to_wall(p, cur_x, cur_y);
+		ray_dir(p);
+		g_len_to_wall(p, cur_x, cur_y);
 		p->map.len_list[x] = p->map.len_to_wall;
 		put_wall_line(p, x, p->map);
 		angle = angle + ((double)p->view_angle / p->map.win_x);
@@ -56,6 +56,6 @@ void	draw_p_view(t_player *p, double cur_x, double cur_y)
 
 void	d_wld(t_player *p)
 {
-	get_turn_direction(p);
-	draw_p_view(p, p->cur_x, p->cur_y);
+	g_turn_dir(p);
+	d_p_view(p, p->cur_x, p->cur_y);
 }

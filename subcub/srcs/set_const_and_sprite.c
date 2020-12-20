@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 19:50:02 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:49:22 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:31:43 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	get_len_to_sp(t_player *p, double cur_x, double cur_y)
+void	g_len_to_sp(t_player *p, double cur_x, double cur_y)
 {
 	double	len_x;
 	double	len_y;

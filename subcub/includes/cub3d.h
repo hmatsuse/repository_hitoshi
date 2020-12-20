@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 14:11:52 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:25:34 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:51:30 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,22 +65,18 @@ typedef struct	s_map
 {
 	char		*name;
 	char		**world_map;
-	char		**check_map;
+	char		**ck_map;
+	int			*len_list;
 	int			map_len;
 	int			map_width;
 	int			wall_st_x;
 	int			wall_st_y;
 	int			win_x;
 	int			win_y;
-	int			floor_color;
-	int			ceilling_color;
+	int			flr_color;
+	int			clg_color;
 	int			max_win_x;
 	int			max_win_y;
-	int			found_st_pos;
-	int			comma;
-	int			sp_num;
-	int			sp_index;
-	int			*len_list;
 	int			ok_r;
 	int			ok_no;
 	int			ok_so;
@@ -89,6 +85,10 @@ typedef struct	s_map
 	int			ok_s;
 	int			ok_f;
 	int			ok_c;
+	int			found_st_pos;
+	int			comma;
+	int			sp_num;
+	int			sp_index;
 	int			p_pos_st_x;
 	int			p_pos_st_y;
 	int			color;
@@ -139,10 +139,10 @@ typedef struct	s_player
 	double		cur_x;
 	double		cur_y;
 	int			ready_to_go;
-	double		h_axis_x;
-	double		h_axis_y;
-	double		v_axis_x;
-	double		v_axis_y;
+	double		h_cross_x;
+	double		h_cross_y;
+	double		v_cross_x;
+	double		v_cross_y;
 	int			ray_up;
 	int			ray_down;
 	int			ray_right;
@@ -162,46 +162,48 @@ typedef struct	s_player
 	double		h_const_y;
 	double		v_const_x;
 	double		v_const_y;
-	int			flg_hit_h;
-	int			flg_hit_v;
+	int			is_touch_h;
+	int			is_touch_v;
 }				t_player;
 
-int				get_map_data(t_map *map_info, t_player *p);
+char			*ft_strchar(char *s, char c);
 void			ft_putstr_fd(char *s, int fd);
-void			get_p_pos(t_player *p);
 int				ft_strcmp(char *s1, char *s2);
-int				press_key(int key, t_player *p);
-void			my_mlx_pixel_put(t_player *data, int x, int y, int color);
-void			clear_player(t_player *p, double cur_x, double cur_y);
-void			ray_direction(t_player *p);
-void			find_v_axis(t_player *p, double fixed_ray_angle);
-void			find_h_axis(t_player *p, double fixed_ray_angle);
-void			clear_map(t_player *p);
+int				g_map_data(t_map *map_info, t_player *p);
+void			g_p_pos(t_player *p);
+void			g_turn_dir(t_player *p);
+void			g_map_len_width_sp(t_map *map_info);
+void			g_txt(t_player *p, char dir, char *line);
+void			g_len_to_sp(t_player *p, double cur_x, double cur_y);
+void			g_background_color(t_map *map_info, char dir, char *line);
+void			g_map(char *line, int *len, t_player *p, size_t len_line);
+void			g_win_size(t_map *map_info, char *line);
+void			g_len_to_wall(t_player *p, double cur_x, double cur_y);
 void			d_background(t_player *p);
 void			d_clg(t_player *p);
 void			d_wld(t_player *p);
 void			d_flr(t_player *p);
-void			get_turn_direction(t_player *p);
+int				press_key(int key, t_player *p);
+void			my_mlx_pixel_put(t_player *data, int x, int y, int color);
+void			clear_player(t_player *p, double cur_x, double cur_y);
+void			ray_dir(t_player *p);
+void			find_v_cross(t_player *p, double fixed_ray_angle);
+void			find_h_cross(t_player *p, double fixed_ray_angle);
+void			clear_map(t_player *p);
 void			compare_v_and_h(t_player *p);
-void			check_irregular(t_player *p, int *x, int *y, int *flag);
-void			check_map(t_player *p);
+void			ck_irregular(t_player *p, int *x, int *y, int *flag);
+void			ck_map(t_player *p);
 int				save_bmp(t_player *p);
 void			error_quit(int errnum);
-char			*ft_strchar(char *s, char c);
 double			fix_angle(double angle);
 void			set_const_value(t_player *p, double fixed_ray_angle, char c);
 int				is_map(char *line);
-void			get_map_len_width_sp(t_map *map_info);
-void			fix_ray_angle(t_player *p);
 int				is_map_data(char *line, size_t line_len);
+void			fix_ray_angle(t_player *p);
 void			skip_space(char *line, int *i);
-void			get_txt(t_player *p, char dir, char *line);
-void			get_background_color(t_map *map_info, char dir, char *line);
 double			modify_angle(double angle);
-void			get_map(char *line, int *len, t_player *p, size_t len_line);
-void			check_info(t_map *map_info);
+void			ck_info(t_map *map_info);
 void			input_sp(t_player *p, char *line, int *len);
-void			get_win_size(t_map *map_info, char *line);
 int				press_close_botton(int key, t_player *p);
 void			d_sp(t_player *p, int *len_list, int index);
 void			sort_sp(t_player *p, t_sp *sp_array);
@@ -212,21 +214,19 @@ void			init_txt(t_player *player, t_txt *texture);
 void			init_sp_data(t_player *p, double *sp_angle
 					, double p_start_angle, int index);
 void			make_bmp(t_player p);
-void			get_len_to_wall(t_player *p, double cur_x, double cur_y);
 void			put_wall_line(t_player *p, int map_block_x, t_map map);
 void			read_line(t_map *map_info, char *line, int *len, t_player *p);
-void			get_len_to_sp(t_player *p, double cur_x, double cur_y);
 void			add_zero(t_map *map_info, size_t len_line, int *len);
+void			input_dir(t_map *map_info, char *line, int *len, int x);
 void			input_map(t_map *map_info, char *line, size_t len_line
 					, int *len);
-int				founds_h_point(t_player *p, double next_x, double next_y);
-void			input_dir(t_map *map_info, char *line, int *len, int x);
+int				find_h_point(t_player *p, double next_x, double next_y);
+void			find_wall_h_point(t_player *p);
+int				find_v_point(t_player *p, double next_x, double next_y);
 void			next_v_point(t_player *p, double *next_x, double *next_y);
 void			set_h_wall(t_player *p, double x, double y);
 void			next_h_point(t_player *p, double *next_x, double *next_y);
-void			find_wall_h_point(t_player *p);
 void			set_v_wall(t_player *p, double x, double y);
-int				founds_v_point(t_player *p, double next_x, double next_y);
 void			first_wall_v_point(t_player *p);
 
 #endif

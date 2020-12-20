@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_background_color.c                             :+:      :+:    :+:   */
+/*   g_background_clr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 08:14:04 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:34:27 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:30:06 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	check_color_error(int red, int green, int blue)
+void	ck_color_error(int red, int green, int blue)
 {
 	if (red < 0 || red > 255)
 		error_quit(COLOR_ERR);
@@ -49,12 +49,12 @@ void	input_floor_celling_color(int *color, char *line, t_map *map_info)
 	get_color_num(line, map_info, &i);
 	if ('-' == line[i])
 		error_quit(MAP_ERR);
-	check_color_error(map_info->red, map_info->green, map_info->blue);
+	ck_color_error(map_info->red, map_info->green, map_info->blue);
 	*color = (map_info->red * (int)pow(16, 4)) + \
 	(map_info->green * (int)pow(16, 2)) + map_info->blue;
 }
 
-void	get_background_color(t_map *map_info, char dir, char *line)
+void	g_background_color(t_map *map_info, char dir, char *line)
 {
 	map_info->red = 0;
 	map_info->green = 0;
@@ -62,12 +62,12 @@ void	get_background_color(t_map *map_info, char dir, char *line)
 	map_info->comma = 0;
 	if (dir == 'F')
 	{
-		input_floor_celling_color(&map_info->floor_color, line, map_info);
+		input_floor_celling_color(&map_info->flr_color, line, map_info);
 		map_info->ok_f++;
 	}
 	else if (dir == 'C')
 	{
-		input_floor_celling_color(&map_info->ceilling_color, line, map_info);
+		input_floor_celling_color(&map_info->clg_color, line, map_info);
 		map_info->ok_c++;
 	}
 }

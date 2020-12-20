@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
+/*   g_map.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 09:51:38 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:45:12 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:30:30 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	input_dir(t_map *map_info, char *line, int *len, int x)
 	free(tmp);
 }
 
-void	check_info(t_map *map_info)
+void	ck_info(t_map *map_info)
 {
 	if (map_info->ok_r && map_info->ok_no && map_info->ok_so
 		&& map_info->ok_we && map_info->ok_ea && map_info->ok_s &&
@@ -37,9 +37,9 @@ void	check_info(t_map *map_info)
 		error_quit(MAP_ERR);
 }
 
-void	get_map(char *line, int *len, t_player *player, size_t len_line)
+void	g_map(char *line, int *len, t_player *player, size_t len_line)
 {
-	check_info(&player->map);
+	ck_info(&player->map);
 	if (!is_map(line))
 		error_quit(MAP_ERR);
 	if (!(player->map.world_map[*len] = \

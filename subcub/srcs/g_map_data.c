@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map_data.c                                     :+:      :+:    :+:   */
+/*   g_map_data.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 10:43:06 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:43:19 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:28:45 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	ft_strdup_map(t_map *map_info)
 	i = 0;
 	while (i < map_info->map_len)
 	{
-		if (!(map_info->check_map[i] = ft_strdup(map_info->world_map[i])))
+		if (!(map_info->ck_map[i] = ft_strdup(map_info->world_map[i])))
 			error_quit(MLC_ERR);
 		i++;
 	}
-	map_info->check_map[i] = NULL;
+	map_info->ck_map[i] = NULL;
 }
 
 void	map_malloc(t_map *map_info)
@@ -31,12 +31,12 @@ void	map_malloc(t_map *map_info)
 	if (!(map_info->world_map = \
 		(char**)malloc(sizeof(char *) * (map_info->map_len + 1))))
 		error_quit(MLC_ERR);
-	if (!(map_info->check_map = \
+	if (!(map_info->ck_map = \
 		(char**)malloc(sizeof(char *) * (map_info->map_len + 1))))
 		error_quit(MLC_ERR);
 }
 
-void	check_file_name(char *name)
+void	ck_file_name(char *name)
 {
 	int		i;
 
@@ -70,14 +70,14 @@ void	open_map(t_map *map_info, t_player *p)
 	close(fd);
 }
 
-int		get_map_data(t_map *map_info, t_player *p)
+int		g_map_data(t_map *map_info, t_player *p)
 {
-	check_file_name(map_info->name);
-	get_map_len_width_sp(map_info);
+	ck_file_name(map_info->name);
+	g_map_len_width_sp(map_info);
 	map_malloc(map_info);
 	init_sp(map_info, p);
 	open_map(map_info, p);
-	check_info(&p->map);
+	ck_info(&p->map);
 	ft_strdup_map(map_info);
 	return (0);
 }

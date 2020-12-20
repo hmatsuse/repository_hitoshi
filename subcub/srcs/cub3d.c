@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 09:40:57 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:41:17 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:27:32 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	cub3d(t_player p)
 	p.img = mlx_new_image(p.mlx_ptr, p.map.win_x, p.map.win_y);
 	p.addr = mlx_get_data_addr(p.img, &p.bits_per_pixel
 		, &p.line_length, &p.endian);
-	get_p_pos(&p);
-	check_map(&p);
+	g_p_pos(&p);
+	ck_map(&p);
 	d_background(&p);
 	d_wld(&p);
 	mlx_put_image_to_window(p.mlx_ptr, p.win_ptr, p.img, 0, 0);
@@ -45,7 +45,7 @@ int		main(int argc, char *argv[])
 		p.map.name = argv[1];
 		init_player(&p);
 		init_map(&p.map);
-		get_map_data(&p.map, &p);
+		g_map_data(&p.map, &p);
 		if (!(p.map.len_list = malloc(sizeof(int) * (p.map.win_x + 1))))
 			error_quit(MLC_ERR);
 		if (argc == 3 && ft_strcmp(argv[2], SAVE))

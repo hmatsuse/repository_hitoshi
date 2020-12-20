@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_p_pos.c                                        :+:      :+:    :+:   */
+/*   g_p_pos.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 08:11:17 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:45:43 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:27:32 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	get_p_dir(t_player *p, char map_word, int x, int y)
 	}
 }
 
-void	get_p_pos(t_player *p)
+void	g_p_pos(t_player *p)
 {
 	int		len;
 	int		width;

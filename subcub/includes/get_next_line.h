@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 15:52:37 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 01:30:27 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 14:30:59 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int			get_next_line(int fd, char **line);
 int			ft_strlen(char *s);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strdup(const char *s);
-int			check_nl(char *str);
+int			ck_nl(char *str);
 int			count_until_nl(char *concatline);
 
 #endif

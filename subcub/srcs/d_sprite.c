@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_sprites.c                                     :+:      :+:    :+:   */
+/*   d_sprite.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 11:39:27 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:33:51 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 14:50:41 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,15 @@ int		get_sprite_color(t_player *data, int x, int y)
 	return (color);
 }
 
-void	draw_sprite2(t_player *p, int index, int x)
+void	ck_sp_angle(t_player *p, double p_start_angle, int index)
+{
+	if (p_start_angle > PI * 3 / 2 && p->sp_array[index].angle < PI / 2)
+		p->sp_array[index].angle += PI * 2;
+	if (p_start_angle < PI / 2 && p->sp_array[index].angle > PI * 3 / 2)
+		p->sp_array[index].angle -= PI * 2;
+}
+
+void	d_sp2(t_player *p, int index, int x)
 {
 	int		y;
 
@@ -42,23 +50,15 @@ void	draw_sprite2(t_player *p, int index, int x)
 	}
 }
 
-void	draw_sprite1(t_player *p, int index, int *len_list, int x)
+void	d_sp1(t_player *p, int index, int *len_list, int x)
 {
 	while (x < p->sp_array[index].st_x + p->sp_array[index].hei_x)
 	{
 		if (x >= 0 && x < p->map.win_x && \
 			len_list[x] > p->sp_array[index].len_to_sp)
-			draw_sprite2(p, index, x);
+			d_sp2(p, index, x);
 		x++;
 	}
-}
-
-void	check_sp_angle(t_player *p, double p_start_angle, int index)
-{
-	if (p_start_angle > PI * 3 / 2 && p->sp_array[index].angle < PI / 2)
-		p->sp_array[index].angle += PI * 2;
-	if (p_start_angle < PI / 2 && p->sp_array[index].angle > PI * 3 / 2)
-		p->sp_array[index].angle -= PI * 2;
 }
 
 void	d_sp(t_player *p, int *len_list, int index)
@@ -71,10 +71,10 @@ void	d_sp(t_player *p, int *len_list, int index)
 	p_start_angle = modify_angle(p->angle - (VIEW_ANGLE / 2));
 	while (index < p->map.sp_num)
 	{
-		check_sp_angle(p, p_start_angle, index);
+		ck_sp_angle(p, p_start_angle, index);
 		init_sp_data(p, &sp_angle, p_start_angle, index);
 		x = p->sp_array[index].st_x;
-		draw_sprite1(p, index, len_list, x);
+		d_sp1(p, index, len_list, x);
 		index++;
 	}
 }

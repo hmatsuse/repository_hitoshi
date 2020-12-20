@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_win_size.c                                     :+:      :+:    :+:   */
+/*   g_win_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 01:42:48 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:46:07 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:30:50 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	input_win_size(char *line, int *i, int *win_size)
 		error_quit(MAP_ERR);
 }
 
-void	get_win_size(t_map *map_info, char *line)
+void	g_win_size(t_map *map_info, char *line)
 {
 	int		i;
 	int		win_x;

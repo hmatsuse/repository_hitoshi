@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize.c                                       :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 09:36:17 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:46:30 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:42:44 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	init_player(t_player *p)
 	p->cur_y = 50;
 	p->spin_x = 0;
 	p->spin_y = 0;
-	p->flg_hit_h = FALSE;
-	p->flg_hit_v = FALSE;
+	p->is_touch_h = FALSE;
+	p->is_touch_v = FALSE;
 	p->map.map_width = 0;
 	p->map.found_st_pos = FALSE;
 	p->ready_to_go = FALSE;

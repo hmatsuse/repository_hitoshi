@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 10:50:15 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 00:43:26 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 14:30:59 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int				get_next_line(int fd, char **line)
 		return (free_all(buf, NULL, NULL, -1));
 	buf[read_result] = '\0';
 	concat_all = ft_strjoin(save[fd], buf);
-	while (!check_nl(concat_all))
+	while (!ck_nl(concat_all))
 	{
 		if (!(read_result = read(fd, buf, BUFFER_SIZE)))
 		{

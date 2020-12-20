@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/11 10:52:17 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 00:40:50 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 14:30:59 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char		*ft_strdup(const char *s)
 	return (result);
 }
 
-int			check_nl(char *str)
+int			ck_nl(char *str)
 {
 	int		i;
 

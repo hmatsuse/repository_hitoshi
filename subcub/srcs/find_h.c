@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   search_h_axis.c                                    :+:      :+:    :+:   */
+/*   find_h.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 05:19:18 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:31:49 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:36:13 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ static void	first_h_point(t_player *p, double fixed_ray_angle)
 	double	tangent;
 
 	if (p->ray_up)
-		p->h_axis_y = ((int)(p->cur_y / BLOCK_LEN)) * BLOCK_LEN - 0.01;
+		p->h_cross_y = ((int)(p->cur_y / BLOCK_LEN)) * BLOCK_LEN - 0.01;
 	else
-		p->h_axis_y = ((int)(p->cur_y / BLOCK_LEN)) * BLOCK_LEN + BLOCK_LEN;
+		p->h_cross_y = ((int)(p->cur_y / BLOCK_LEN)) * BLOCK_LEN + BLOCK_LEN;
 	tangent = tan((PI / 2) - fixed_ray_angle);
 	if (p->ray_right)
-		p->h_axis_x = p->cur_x + ((fabs(p->cur_y - p->h_axis_y)) * tangent);
+		p->h_cross_x = p->cur_x + ((fabs(p->cur_y - p->h_cross_y)) * tangent);
 	else
-		p->h_axis_x = p->cur_x - ((fabs(p->cur_y - p->h_axis_y)) * tangent);
+		p->h_cross_x = p->cur_x - ((fabs(p->cur_y - p->h_cross_y)) * tangent);
 }
 
 void		next_h_point(t_player *p, double *next_x, double *next_y)
 {
-	*next_x = p->h_axis_x + p->h_const_x;
-	*next_y = p->h_axis_y + p->h_const_y;
+	*next_x = p->h_cross_x + p->h_const_x;
+	*next_y = p->h_cross_y + p->h_const_y;
 	if (*next_x < 0)
 		*next_x = 0;
 	if (*next_y < 0)
@@ -39,11 +39,11 @@ void		next_h_point(t_player *p, double *next_x, double *next_y)
 		*next_x = INT_MAX;
 	if (*next_y > INT_MAX)
 		*next_y = INT_MAX;
-	p->h_axis_x = *next_x;
-	p->h_axis_y = *next_y;
+	p->h_cross_x = *next_x;
+	p->h_cross_y = *next_y;
 }
 
-int			founds_h_point(t_player *p, double next_x, double next_y)
+int			find_h_point(t_player *p, double next_x, double next_y)
 {
 	int		x;
 	int		y;
@@ -69,17 +69,17 @@ int			founds_h_point(t_player *p, double next_x, double next_y)
 	return (FALSE);
 }
 
-void		find_h_axis(t_player *p, double fixed_ray_angle)
+void		find_h_cross(t_player *p, double fixed_ray_angle)
 {
 	int		x;
 	int		y;
 	int		flag;
 
 	first_h_point(p, fixed_ray_angle);
-	x = (int)(p->h_axis_x / BLOCK_LEN);
-	y = (int)(p->h_axis_y / BLOCK_LEN);
+	x = (int)(p->h_cross_x / BLOCK_LEN);
+	y = (int)(p->h_cross_y / BLOCK_LEN);
 	flag = 0;
-	check_irregular(p, &x, &y, &flag);
+	ck_irregular(p, &x, &y, &flag);
 	if (flag > 0)
 	{
 		set_h_wall(p, MAX_RANGE, MAX_RANGE);
@@ -87,7 +87,7 @@ void		find_h_axis(t_player *p, double fixed_ray_angle)
 	}
 	if ('1' == p->map.world_map[y][x])
 	{
-		set_h_wall(p, p->h_axis_x, p->h_axis_y);
+		set_h_wall(p, p->h_cross_x, p->h_cross_y);
 		return ;
 	}
 	set_const_value(p, fixed_ray_angle, 'h');

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d_utils.c                                      :+:      :+:    :+:   */
+/*   cub3d_sup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 10:48:31 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:40:52 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:01:54 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,32 @@ void	compare_v_and_h(t_player *player)
 	double	h_dis;
 	double	v_dis;
 
-	player->flg_hit_h = FALSE;
-	player->flg_hit_v = FALSE;
+	player->is_touch_h = FALSE;
+	player->is_touch_v = FALSE;
 	h_dis = hypot(fabs(player->h_wall_x - player->cur_x),
 			fabs(player->h_wall_y - player->cur_y));
 	v_dis = hypot(fabs(player->v_wall_x - player->cur_x),
 			fabs(player->v_wall_y - player->cur_y));
 	player->map.len_to_wall = fmin(h_dis, v_dis);
 	if (h_dis < v_dis)
-		player->flg_hit_h = TRUE;
+		player->is_touch_h = TRUE;
 	else
-		player->flg_hit_v = TRUE;
+		player->is_touch_v = TRUE;
 }
 
-void	skip_space(char *line, int *i)
+int		ft_strcmp(char *s1, char *s2)
 {
-	while (ft_strchar(" ", line[*i]))
-		(*i)++;
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (0);
+		s1++;
+		s2++;
+	}
+	if (*s1 == *s2)
+		return (1);
+	else
+		return (0);
 }
 
 char	*ft_strchar(char *s, char c)
@@ -59,17 +68,8 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-int		ft_strcmp(char *s1, char *s2)
+void	skip_space(char *line, int *i)
 {
-	while (*s1 && *s2)
-	{
-		if (*s1 != *s2)
-			return (0);
-		s1++;
-		s2++;
-	}
-	if (*s1 == *s2)
-		return (1);
-	else
-		return (0);
+	while (ft_strchar(" ", line[*i]))
+		(*i)++;
 }

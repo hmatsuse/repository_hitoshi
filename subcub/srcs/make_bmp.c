@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 19:40:04 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:47:37 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:27:32 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	header_init(char *cont, int width, int height)
+void	init_header(char *cont, int width, int height)
 {
 	int		size;
 
@@ -42,7 +42,7 @@ void	header_data(t_player *p, char *cont, int width, int height)
 	int		now;
 	int		utils[3];
 
-	header_init(cont, width, height);
+	init_header(cont, width, height);
 	now = 54;
 	utils[1] = 0;
 	while (utils[1] < height)
@@ -87,8 +87,8 @@ void	make_bmp(t_player p)
 	p.img = mlx_new_image(p.mlx_ptr, p.map.win_x, p.map.win_y);
 	p.addr = mlx_get_data_addr(p.img, &p.bits_per_pixel
 		, &p.line_length, &p.endian);
-	get_p_pos(&p);
-	check_map(&p);
+	g_p_pos(&p);
+	ck_map(&p);
 	d_background(&p);
 	d_wld(&p);
 	save_bmp(&p);
