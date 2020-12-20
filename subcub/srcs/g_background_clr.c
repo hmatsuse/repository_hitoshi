@@ -6,21 +6,11 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/19 08:14:04 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 15:30:06 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 21:23:08 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void	ck_color_error(int red, int green, int blue)
-{
-	if (red < 0 || red > 255)
-		error_quit(COLOR_ERR);
-	if (green < 0 || green > 255)
-		error_quit(COLOR_ERR);
-	if (blue < 0 || blue > 255)
-		error_quit(COLOR_ERR);
-}
 
 void	get_color_num(char *line, t_map *map_info, int *i)
 {
@@ -38,6 +28,16 @@ void	get_color_num(char *line, t_map *map_info, int *i)
 			map_info->comma++;
 		(*i)++;
 	}
+}
+
+void	ck_color_error(int red, int green, int blue)
+{
+	if (red < 0 || red > 255)
+		error_quit(COLOR_ERR);
+	if (green < 0 || green > 255)
+		error_quit(COLOR_ERR);
+	if (blue < 0 || blue > 255)
+		error_quit(COLOR_ERR);
 }
 
 void	input_floor_celling_color(int *color, char *line, t_map *map_info)

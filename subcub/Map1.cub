@@ -1,0 +1,13 @@
+R 1000 700
+NO ./textures/greystone.xpm
+SO ./textures/mossy5.xpm
+WE ./textures/mossy4.xpm
+EA ./textures/mossy1.xpm
+S ./textures/barrel.xpm
+F 20,100,0
+C 12,22,250
+00000
+01110
+01E10
+01110
+00000

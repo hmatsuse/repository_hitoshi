@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/18 18:37:41 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 04:48:08 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 17:23:47 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	clear_and_move(t_player *p, double move_x, double move_y)
 	int		x;
 	int		y;
 
-	x = (int)(move_x) / BLOCK_WIDTH;
 	y = (int)(move_y) / BLOCK_LEN;
+	x = (int)(move_x) / BLOCK_WIDTH;
 	if (p->map.world_map[y][x] == '1')
 		;
 	else if (can_move(p, move_x, move_y))

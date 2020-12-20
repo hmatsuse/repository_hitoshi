@@ -6,13 +6,13 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 10:43:06 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 15:28:45 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 21:24:58 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	ft_strdup_map(t_map *map_info)
+void	strdup_map(t_map *map_info)
 {
 	int		i;
 
@@ -78,6 +78,6 @@ int		g_map_data(t_map *map_info, t_player *p)
 	init_sp(map_info, p);
 	open_map(map_info, p);
 	ck_info(&p->map);
-	ft_strdup_map(map_info);
+	strdup_map(map_info);
 	return (0);
 }

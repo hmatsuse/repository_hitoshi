@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 14:11:52 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 15:51:30 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 20:26:21 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define FALSE 0
 # define SAVE "--save"
 # define CUB ".cub"
+# define NUM "1234567890"
 # define BLOCK_LEN 64
 # define BLOCK_WIDTH 64
 # define MAX_RANGE 1000000

@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/22 09:36:17 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 15:42:44 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 21:00:41 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,20 @@ void	init_txt(t_player *player, t_txt *texture)
 
 void	init_sp(t_map *map_info, t_player *player)
 {
-	t_sp	new;
+	t_sp	tmp_sp;
 
 	if (!(player->sp_array = malloc(sizeof(t_sp) * map_info->sp_num)))
 		error_quit(MLC_ERR);
 	map_info->sp_index = 0;
 	while (map_info->sp_index < map_info->sp_num)
 	{
-		new.map_x = 0;
-		new.map_y = 0;
-		new.len_to_sp = 1;
-		new.st_x = 0;
-		new.st_y = 0;
-		new.found_st_pos = 0;
-		player->sp_array[map_info->sp_index] = new;
+		tmp_sp.map_x = 0;
+		tmp_sp.map_y = 0;
+		tmp_sp.len_to_sp = 1;
+		tmp_sp.st_x = 0;
+		tmp_sp.st_y = 0;
+		tmp_sp.found_st_pos = 0;
+		player->sp_array[map_info->sp_index] = tmp_sp;
 		map_info->sp_index++;
 	}
 	map_info->sp_index = 0;

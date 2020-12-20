@@ -6,7 +6,7 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/21 01:42:48 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 15:30:50 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 20:26:35 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	input_win_size(char *line, int *i, int *win_size)
 {
-	while (ft_strchar("1234567890", line[*i]))
+	while (ft_strchar(NUM, line[*i]))
 	{
 		*win_size = *win_size * 10 + (line[*i] - '0');
 		(*i)++;

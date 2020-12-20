@@ -6,11 +6,21 @@
 /*   By: hmatsuse <hmatsuse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 13:12:31 by hmatsuse          #+#    #+#             */
-/*   Updated: 2020/12/20 15:30:50 by hmatsuse         ###   ########.fr       */
+/*   Updated: 2020/12/20 21:21:58 by hmatsuse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	input_txt(t_player *player, t_txt *texture, char *line)
+{
+	int		i;
+
+	i = 2;
+	skip_space(line, &i);
+	texture->name = ft_strdup(line + i);
+	init_txt(player, texture);
+}
 
 void	read_line(t_map *map_info, char *line, int *len, t_player *p)
 {
@@ -37,16 +47,6 @@ void	read_line(t_map *map_info, char *line, int *len, t_player *p)
 		g_map(line, len, p, len_line);
 		(*len)++;
 	}
-}
-
-void	input_txt(t_player *player, t_txt *texture, char *line)
-{
-	int		i;
-
-	i = 2;
-	skip_space(line, &i);
-	texture->name = ft_strdup(line + i);
-	init_txt(player, texture);
 }
 
 void	g_txt(t_player *player, char dir, char *line)
